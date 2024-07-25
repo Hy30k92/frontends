@@ -6,6 +6,7 @@ from app.routes.css import css_router
 from app.routes.html import html_router
 from app.routes.jscript import jscript_router
 from app.routes.sungjuk import sungjuk_router
+from app.routes.emp import emp_router
 
 app = FastAPI()
 templates = Jinja2Templates(directory="views/templates")  # jinja2 설정
@@ -15,6 +16,8 @@ app.include_router(sungjuk_router, prefix='/sungjuk')
 app.include_router(html_router, prefix='/html')
 app.include_router(css_router, prefix='/css')
 app.include_router(jscript_router, prefix='/js')
+
+app.include_router(emp_router, prefix='/emp')
 
 
 # index 라우트
