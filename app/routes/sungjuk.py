@@ -2,6 +2,8 @@ from fastapi import APIRouter, Request, Form
 from starlette.responses import HTMLResponse
 from starlette.templating import Jinja2Templates
 
+from app.schema.sungjuk import SungJuk
+
 # 라우터 생성
 sungjuk_router = APIRouter()
 # 템플릿 지정
@@ -17,14 +19,14 @@ async def sungjuk(req: Request):
 async def sungjukok(req: Request,
                     name: str = Form(...) , kor: int = Form(...) ,
                     eng: int = Form(...) , mat:int = Form(...) ):
-    print(name, kor, eng, mat)
     tot = kor + eng + mat
     avg = tot / 3
-    grd =  '가'
-    if (avg >= 90) : grd =  '수'
-    elif (avg >= 80) : grd =  '우'
-    elif (avg >= 70) : grd =  '미'
-    elif (avg >= 60) : grd =  '양'
+    grd = '가'
+    if (avg >= 90): grd = '수'
+    elif (avg >= 80): grd = '우'
+    elif (avg >= 70): grd = '미'
+    elif (avg >= 60): grd = '양'
+    sj = SungJuk(name=name, kor=kor, eng=eng, mat=mat,
+                 tot=tot, avg=avg, grd=grd)
     return templates.TemplateResponse('sungjuk/result.html',
-          {'name': name, 'kor': kor, 'eng': eng, 'mat': mat,
-           'tot': tot, 'avg': avg,'grd': grd, 'request': req})
+          {'sj': sj, 'request': req})
