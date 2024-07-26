@@ -16,7 +16,6 @@ app.include_router(sungjuk_router, prefix='/sungjuk')
 app.include_router(html_router, prefix='/html')
 app.include_router(css_router, prefix='/css')
 app.include_router(jscript_router, prefix='/js')
-
 app.include_router(emp_router, prefix='/emp')
 
 
