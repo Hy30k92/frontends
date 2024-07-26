@@ -11,5 +11,5 @@ class Employee(BaseModel):
     jobid: str
     sal: int
     comm: float
-    mrgid: int
+    mgrid: int
     deptid: int

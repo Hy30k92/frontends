@@ -21,8 +21,8 @@ async def empok(req: Request,
                 empid: str = Form(...), fname: str = Form(...), lname: str = Form(...),
                 email: str = Form(...), phone: str = Form(...), hdate: str = Form(...),
                 jobid: str = Form(...), sal: str = Form(...), comm: str = Form(...),
-                mrgid: str = Form(...), deptid: str = Form(...)):
+                mgrid: str = Form(...), deptid: str = Form(...)):
     emp = Employee(empid=empid, fname=fname, lname=lname, email=email, phone=phone, hdate=hdate,
-              jobid=jobid, sal=sal, comm=comm, mrgid=mrgid, deptid=deptid)
+              jobid=jobid, sal=sal, comm=comm, mgrid=mgrid, deptid=deptid)
     return templates.TemplateResponse('emp/empresult.html',
                                       {'emp': emp, 'request': req})

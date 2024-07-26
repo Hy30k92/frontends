@@ -9,13 +9,33 @@
     <p>사원 번호 : {{ emp.empid }}</p>
     <p>이름 : {{ emp.fname }} </p>
     <p>성: {{ emp.lname }} </p>
-    <p>이메일 : {{  .email }} </p>
+    <p>이메일 : {{ emp.email }} </p>
     <p>핸드폰 : {{ emp.phone }} </p>
     <p>입사일 : {{ emp.hdate }} </p>
     <p>직책 : {{ emp.jobid }} </p>
     <p>급여 : {{ emp.sal }} </p>
     <p>수당 : {{ emp.comm }} </p>
-    <p>매니저 번호: {{ emp.mrgid }} </p>
+    <p>상사 번호: {{ emp.mgrid }} </p>
     <p>부서 번호: {{ emp.deptid }} </p>
+
+    <table border="1"  cellspacing="1">
+        <colgroup>
+            <col width="70px"> <col width="70px"> <col width="70px"> <col width="150px">
+            <col width="150px"><col width="150px"> <col width="70px"> <col width="70px">
+            <col width="70px"> <col width="70px"> <col width="70px">
+        </colgroup>
+        <tr align="center">
+            <td colspan="11">사원 등록 처리 결과</td>
+        </tr>
+        <tr align="center">
+            <td>사원번호</td> <td>이름</td> <td>성</td> <td>이메일</td> <td>전화번호</td>
+            <td>입사일</td> <td>직책</td> <td>급여</td> <td>수당</td> <td>상사 번호</td> <td>부서번호</td>
+        </tr>
+        <tr align="center">
+            <td> {{ emp.empid }}</td> <td>{{ emp.fname }}</td><td>{{ emp.lname }}</td><td>{{ emp.email }}</td> <td>{{ emp.phone }}</td>
+            <td>{{ emp.hdate }}</td> <td>{{ emp.jobid }}</td> <td>{{ emp.sal }}</td> <td> {{ emp.comm }}</td> <td>{{ emp.mgrid }}</td> <td>{{ emp.deptid }}</td>
+        </tr>
+    </table>
+
 </body>
 </html>
