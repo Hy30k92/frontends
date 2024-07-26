@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>링크 관련 태그</title>
+</head>
+<body>
+    <h1> 링크 관련 태그</h1>
+    <a id="top"></a><!--top 책갈피 -->
+    <h2>개요</h2>
+    <p>html 에서 다른 문서로의 연결/이동 을 위해 작성하는 요소</p>
+    <p>사용자가 링크를 클릭하면 다른 웹페이지나 이메일주소, 파일등으로 이동할 수 있게 해줌</p>
+    <p>링크를 하이퍼(hyper)링크라고도 부름</p>
+    <p>링크를 만들려면 a 태그 내에 href 라는 속성에 문서내 특정위치,
+    이동할 다른 페이지나 외부 사이트를 지정하고, a 태그 사이에 링크를 설명할 텍스트를 포함하면 됨</p>
+    <p>링크의 특성 = 링크의 기본색 : 파랑 / 클릭한 링크색 : 보라색
+    / 링크를 눌렀을때색 : 빨강 , 단, CSS 를 이용하면 특성 변경 가능 </p>
+    <hr>
+    <div><a href="http://naver.com" target="_blank">네이버로 이동</a></div>
+    <div><a href="http://google.com" target="_blank">구글로 이동</a></div>
+    <div><a href="/html/layout" target="_blank">어제 수업한거</a></div>
+    <div><a href="/sungjuk" target="_blank">성적 등록 프로그램</a></div>
+    <div><a href="http://127.0.0.1:8000/sungjuk/" target="_blank">성적 등록 프로그램2</a></div>
+    <div><a href="/emp" target="_blank">사원 등록 프로그램</a></div>
+
+    <h2>문서 내 특정 위치로 이동</h2>
+    <p>링크를 책갈피로도 생성할 수 있는데,
+        id라는 속성 으로 책갈피이름을 지정하고
+        href 속성에 '&sharp;책갈피 이름' 을 지정하면,
+        문서 내 지정한 위치로 이동할 수 있음</p>
+    <p>또한, href 속성에 '문서명&sharp;책갈피 이름' 을 지정하면,
+    특정 파일의 책갈피로도 이동할 수 있음</p>
+    <div><a href="#top">문서 맨 위로</a></div>
+    <div><a href="/html/layout#docstr">'html문서구조'로 이동</a></div>
+
+</body>
+</html>

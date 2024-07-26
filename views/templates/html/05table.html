@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>테이블 관련 테그</title>
+</head>
+<body>
+    <h1>테이블 관련 태그</h1>
+    <h2>개요</h2>
+    <p>여러 종류의 데이터를 일목요연하게 2차원 형태의 표로
+        나타내기 위해 사용하는 요소</p>
+    <p>table 태그로 테이블 시작을(표삽입),<br>
+        tr 태그로 테이블의 행을,<br>
+        th태그로 테이블의 열을,<br>
+        td태그로 테이블의 일반셸을,<br>
+        thead 태그로 테이블의 머릿글을,<br>
+        tbody 태그로 테이블의 본문을 나타냄
+    </p>
+    <p>테이블의 각 컬럼에 공통적인 속성을 정의하려면 colgroup과 col태그를 사용해야 함</p>
+    <p>테이블의 디자인적인 요소들은 CSS로 다루는 것을 추천함!</p>
+
+    <h3>성적 테이블</h3>
+    <table border="1" cellpadding="5">
+        <colgroup>
+            <col width="100px">
+            <col width="100px">
+            <col width="100px">
+            <col width="100px">
+        </colgroup>
+        <tr>
+            <th>이름</th><th>국어</th><th>영어</th><th>수학</th>
+        </tr>
+            <td>홍길동</td><td>99</td><td>98</td><td>99</td>
+        <tr>
+            <td>일지매</td><td>77</td><td>68</td><td>87</td>
+        </tr>
+        <tr>
+            <td>민지</td><td>33</td><td>44</td><td>55</td>
+        </tr>
+    </table>
+
+    <h3>사원 테이블</h3>
+    <table border="1" collpading="5" cellspacing="0">
+        <colgroup>
+            <col width="100px">
+            <col width="100px">
+            <col width="100px">
+            <col width="150px">
+            <col width="150px">
+            <col width="150px">
+            <col width="100px">
+            <col width="100px">
+            <col width="100px">
+            <col width="100px">
+            <col width="100px">
+
+        </colgroup>
+        <tr>
+            <th>사원번호</th><th>이름</th><th>성</th><th>이메일</th><th>핸드폰</th>
+        <th>입사일</th><th>직책</th><th>급여</th><th>수당</th><th>매니저 번호</th><th>부서번호</th>
+        <tr align="center">
+            <td>1</td><td>민혁</td><td>김</td><td>qwer@asdf.com</td><td>123-1234-134</td>
+        <td>1234-12-12</td><td>qw</td><td>12345</td><td>0</td><td>100</td><td>5</td>
+        </tr>
+    </table>
+
+    <h2>복잡한 표 만들기</h2>
+    <p>복잡한 형태의 표를 만들려면 <br>
+    colspan/rowspan 속성을 적절하게 사용해야함</p>
+    <p>colspan 은 여러 열을 합쳐 하나의 열을 만드는 것이고</p>
+    <p>rowsspan 은 여러 행을 합쳐 하나의 행을 만드는 것</p>
+
+    <table border="1" cellspacing="1" >
+        <tr>
+            <td colspan="5">1</td><!--<td>2</td><td>3</td><td>4</td><td>5</td>-->
+        </tr>
+        <tr>
+            <td rowspan="2">6</td><td rowspan="2">7</td><td rowspan="2">8</td><td colspan="2" rowspan="2" height="60">9</td><!--<td>10</td>-->
+        </tr>
+        <tr>
+            <!--<td>11</td>--><!--<td>12</td>--><!--<td>13</td><td>14</td><td>15</td>-->
+        </tr>
+        <tr>
+            <td colspan="2" width="50px">16</td><!--<td>17</td>-->
+            <td colspan="3" width="80px">18</td><!--<td>19</td><td>20</td>-->
+        </tr>
+        <tr>
+            <td colspan="3">21</td><!--<td>22</td><td>23</td>--><td  colspan="2">24</td><!--<td>25</td>-->
+        </tr>
+    </table>
+
+    <p></p>
+    <p></p>
+</body>
+</html>
