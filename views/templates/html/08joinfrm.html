@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+</head>
+<body>
+    <form name="joinfrm" method="post">
+    <h1>일반 회원</h1>
+    <table border="1" cellpadding="5">
+        <colgroup>
+            <col width="180px">
+            <col width="700px">
+        </colgroup>
+        <tr><td colspan="2">회원가입</td></tr>
+        <tr>
+            <th>이름</th>
+            <th><input type="text" name="name" size="10px" readonly></th>
+        </tr>
+        <tr>
+            <td>주민등록 번호</td>
+            <th><input type="text" name="jumin1" readonly size="10px"> -
+                <input type="text" name="jumin2" readonly size="10px">
+        </th>
+        <tr>
+            <td>아이디</td>
+            <td><input type="text" name="id" minlength="6" maxlength="16">
+            6~16 자의 영문 소문자, 숫자와 특수기호(_)만 사용할 수 있습니다 </td>
+        </tr>
+        <tr>
+            <td>비밀번호</td>
+            <td><input type="password" name="pw" minlength="6" maxlength="16">
+            6~16 자의 영문 대소문자, 숫자 및 특수문자 사용할 수 있습니다 </td>
+        </tr>
+        <tr>
+            <td>비밀번호 확인</td>
+            <td><input type="password" name="repw" min="6" max="16">
+            이전 항목에서 입력했던 비밀번호를 한번 더 입력하세요 </td>
+        </tr>
+        <tr>
+            <td>우편번호</td>
+            <td><input type="text" name="zip1" size="5"> -
+                <input type="text" name="zip2" size="5">
+                <button type="button">💌우편번호 찾기</button>
+        </tr>
+        <tr>
+            <td>주소</td>
+            <td><input type="text" name="addr1" size="30px">
+                <input type="text" name="etcaddr"></td>
+        </tr>
+        <tr>
+            <td>전자우편 주소</td>
+            <td><input type="text" name="email1"> @
+                <input type="text" name="email2" readonly >
+            <select name="email3>">
+                <option> 선택하세요 </option>
+                <option> naver.com</option>
+                <option> google.com</option>
+                <option> hotmail.com</option>
+                <option> 직접 입력</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td>개인 연락처</td>
+            <td><select name="phone">
+            <option value="국번">국번</option>
+            <option value="02">02</option>
+            <option value="031">031</option>
+            <option value="010">010</option><input type="text" name="num1" size="5">-<input type="text" name="num1" size="5">
+        </select>
+        </td>
+        </tr>
+        <tr>
+            <td>자동가입 방지</td>
+            <td><img src="/static/img/captcha.png">
+            <div><input type="text" name="nauto"><button type="submit">❔다른 capcha 보기</button></div></td>
+        </tr>
+    </table>
+    <div><button type="submit" name="ok">✔입력완료</button><button type="reset" name="cancle">❌취소하기</button> </div>
+    </form>
+</body>
+</html>
