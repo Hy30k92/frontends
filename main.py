@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request
 from starlette.responses import HTMLResponse
 from starlette.templating import Jinja2Templates
+from starlette.staticfiles import StaticFiles
 
 from app.routes.css import css_router
 from app.routes.html import html_router
@@ -10,6 +11,7 @@ from app.routes.emp import emp_router
 
 app = FastAPI()
 templates = Jinja2Templates(directory="views/templates")  # jinja2 설정
+app.mount('/static', StaticFiles(directory='views/static'), name='static')
 
 # 외부 라우트 설정
 app.include_router(sungjuk_router, prefix='/sungjuk')
