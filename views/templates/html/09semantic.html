@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>시맨틱 관련 태그</title>
@@ -45,11 +45,62 @@
     <p>시간은 <span style="color: red">금</span>이라구, 친구!!</p>
     <span>시간은 <p> style="color: blue">금</p>이라구, 친구!!</span>
 
+    <h2>레이아웃</h2>
+    <p>레이아웃은 웹 페이지에 여러 구성요소를
+        효과적이고 보기좋게 배치하는 것을 의미함</p>
+    <p>레이아웃 구성방법은
+        1.테이블을 이용
+        2.div 태그 + css 이용
+        3.html 레이아웃 태그 + css 이용</p>
+
+    <img src="/static/img/semantic.png" alt="시맨틱 태그" width="600">
+
+    <h1>시맨틱 웹 관련 요소</h1>
+    <h2>개요</h2>
+    <p>시맨틱 태그란 브라우저, 검색엔진, 개발자 모두에게
+        콘텐츠의 의미를 명확히 설명하는 역할 담당하는 요소</p>
+    <p>시맨틱 태그를 이용하면 컴퓨터가 HTML 요소의 의미를 보다
+        명확히 해석하고 데이터로 활용할 수 있는
+        시맨틱 웹을 실현할 수 있음</p>
+
+    <h2>시맨틱 태그</h2>
+    <p>header : 웹사이트 로고, 검색폼을 나타내는 영역</p>
+    <p>nav : 웹사이트를 구성하는 메뉴gnb를 나타내는 영역</p>
+
+    <p>main : 웹 사이트의 중요 컨텐츠를 표시하는 영역</p>
+    <p>section : 중요 컨텐츠를 구성하는 하위 컨텐츠를
+        그룹화할때 사용</p>
+    <p>article : 중요 컨텐츠들을 구성하는 하위 컨텐츠가 보여지는 영역</p>
+    <p>aside : 웹사이트 중요 컨텐츠와 관련없는 내용을
+        표시하는 영역</p>
+
+    <p>footer : 웹사이트 저작권이나 관리자 정보등을 나타내는 영역</p>
+
+    <h2>시맨틱 태그 사용 이전 레이아웃 구성</h2>
+    <div id="header"> </div>
+    <span id="nav"></span>
+    <div id="aside"></div>
+    <div id="main"></div>
+    <div id="footer"></div>
+        <div id="section">
+            <div id="article1"></div>
+            <div id="article2"></div>
+        </div>
 
 
 
 
-
-
+    <h2>시맨틱 태그 사용 이후 레이아웃 구성</h2>
+    <header></header>
+    <nav></nav>
+    <aside></aside>
+    <main>
+        <section></section>
+        <article>
+            <figure></figure>
+            <p></p>
+        </article>
+    </main>
+    <footer></footer>
 </body>
 </html>
