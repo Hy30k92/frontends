@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 보는방식(폰,pc 에 따라 스케일링해줌 -->
+    <title>CSS 리셋</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+<!--    <link rel="stylesheet" href="/static/css/normalize.css">-->
+
+<!--   <style>html, body, div, span, applet, object, iframe,-->
+<!--    h1, h2, h3, h4, h5, h6, p, blockquote, pre,-->
+<!--    a, abbr, acronym, address, big, cite, code,-->
+<!--    del, dfn, em, img, ins, kbd, q, s, samp,-->
+<!--    small, strike, strong, sub, sup, tt, var,-->
+<!--    b, u, i, center,-->
+<!--    dl, dt, dd, ol, ul, li,-->
+<!--    fieldset, form, label, legend,-->
+<!--    table, caption, tbody, tfoot, thead, tr, th, td,-->
+<!--    article, aside, canvas, details, embed,-->
+<!--    figure, figcaption, footer, header, hgroup,-->
+<!--    menu, nav, output, ruby, section, summary,-->
+<!--    time, mark, audio, video {-->
+<!--    margin: 0;-->
+<!--    padding: 0;-->
+<!--    border: 0;-->
+<!--    font-size: 100%;-->
+<!--    font: inherit;-->
+<!--    vertical-align: baseline;-->
+<!--    }-->
+
+<!--    /* HTML5 display-role reset for older browsers */-->
+<!--     article, aside, details, figcaption, figure,-->
+<!--    footer, header, hgroup, menu, nav, section {-->
+<!--    display: block;-->
+<!--    }-->
+<!--    body {-->
+<!--    line-height: 1;-->
+<!--    }-->
+<!--    ol, ul {-->
+<!--    list-style: none;-->
+<!--    }-->
+<!--    blockquote, q {-->
+<!--    quotes: none;-->
+<!--    }-->
+<!--    blockquote:before, blockquote:after,-->
+<!--    q:before, q:after {-->
+<!--    content: '';-->
+<!--    content: none;-->
+<!--    }-->
+<!--    table {-->
+<!--    border-collapse: collapse;-->
+<!--    border-spacing: 0;-->
+<!--    } -->
+<!--   </style>-->
+</head>
+    <body>
+    <h1>CSS 리셋</h1>
+    <h2>개요</h2>
+    <p>모든 웹브라우저는 디폴트 스타일을 가지고 있음
+        따라서, CSS가 없어도 디폴트 스타일에 의해 기본적인
+        스타일이 적용되어 보여짐 - user-agent stylesheet</p>
+
+    <p>하지만, 브라우저에 따라 디폴트 스타일이 각각
+        다르기 때문에 스타일이 제각각으로 보여지는 경우가 많음</p>
+
+    <h1>Hello, World!!</h1>
+
+    <p>따라서, 이를 초기화reset시켜 다양한 브라우저에서도
+        동일한 스타일이 적용되도록 해야 함</p>
+
+    <p>작업한 결과물이 어떠한 브라우저에서도 동일한 모양을
+        보여주도록 하는 것을 cross browsing이라 함</p>
+
+    <p>단, W3C에서 공식적으로 권장하는 기법은 아니지만,
+        실무에서 편의에 의해 임의로 실행하는 방식임</p>
+
+    <p>브라우저 기본요소의 디자인을 0으로 만들어
+        각각의 스타일의 차이를 최소화 함 - 서식format 통일</p>
+
+    <h2>CSS reset 종류</h2>
+    <p>에릭 마이어eric meyer의 css reset : 최초의 css 리셋,
+        15년이 지난 지금도 많이 사용. 모든 요소에 대해 초기화
+        시키는 것이 성능과 출력에 이슈가 존재할 수 있음
+        (https://meyerweb.com/eric/tools/css/reset)</p>
+
+    <p>normalize reset : 모든 요소를 0으로 고정적으로
+        설정하는 방법에서 탈피한 reset.
+        브라우저의 디폴트 스타일을 통일시키는 방향으로 css를 reset 함.
+        user-agent stylesheet가 표준이 생긴 탓에 탄생하게 된 reset
+        (https://necolas.github.io/normalize.css)</p>
+
+    <p>bootstrap css reset : CSS UI Framework의 하나.
+        적은 노력으로 화려한 웹 페이지를 만들수 있게 해줌
+        normalize css에 부트스트랩만의 reset 추가
+        (https://getbootstrap.com)</p>
+</body>
+</html>

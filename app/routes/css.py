@@ -19,3 +19,7 @@ async def selector(req: Request):
 @css_router.get('/reset')
 async def reset(req: Request):
     return templates.TemplateResponse('css/02reset.html', {'request': req})
+
+@css_router.get('/text')
+async def text(req: Request):
+    return templates.TemplateResponse('css/03text.html', {'request': req})
