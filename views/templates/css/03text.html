@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 텍스트</title>
+    <style>
+        #font p:first-child {
+            font-size: 35px;
+        }   /* html 텍스트 기본크기 : 16px */
+        #font P:nth-child(2) {
+            font-family: 궁서체, 굴림체; font-size: 20px;
+        } /* font-family: 기본글꼴, 대체글꼴1, ... */
+        #font P:nth-child(3) {
+            font-family: 굴림체; font-size: 20px;
+            font-weight: bold;
+        }
+        #font P:nth-child(4) {
+            font-family: 돋움체; font-size: 20px;
+            font-style: italic;
+        }   /*font-style : italc, normal*/
+
+        #font p:last-child{
+            font:bold 25px 궁서체
+        } /* 단축표기 : 스타일 대소문자변환 굵기 크기  줄간격 글꼴 수*/
+
+
+    #line p { width: 50%}
+    #line p:first-child { line-height: 1 }
+    #line p:nth-child(2) { line-height: 5 }
+    #line p:last-child { line-height: 10px }
+
+
+    #logo p:first-child { letter-spacing: 15px }
+    #logo p:nth-child(2) { letter-spacing: 5px }
+    #logo p:last-child { letter-spacing: -5px }
+
+    /* 텍스트 정렬 (텍스트가 블럭요소 안에 있어야함)*/
+        #align p:first-child { text-align: center;
+            border: 1px solid red }
+        #align p:nth-child(2) { text-align: right }
+
+    /* 텍스트 꾸밈*/
+        #deco p:first-child { text-decoration: underline }
+        #deco p:nth-child(2) { text-decoration: overline }
+        #deco p:last-child { text-decoration: line-through }
+
+    /* 텍스트 공백 처리 */
+        #space p {width: 200px; height: 100px;
+        border: 1px solid blue; padding: 10px;
+        margin: 150px 0; }
+        #space p:first-child { white-space: nowrap } /* 줄바꿈 무시 */
+        #space p:nth-child(2) { white-space: pre } /* 작성한 상태 그대로  */
+        #space p:last-child { white-space: pre-wrap  } /* 줄바꿈 유지 */
+
+    /* 텍스트 넘침 처리*/
+        #overflow p {width: 200px; height: 100px;
+            border: 1px solid red; padding: 10px;
+            margin: 150px 0; }
+        #overflow p:first-child { overflow: hidden } /* 넘친 텍스트는 사라짐 - 흔적이 남음 */
+        #overflow p:nth-child(2) { white-space: nowrap;
+                overflow:hidden; text-overflow: ellipsis } /* 넘친텍스트는 사라짐 - 흔적을 말줄임으로 처리 */
+        #overflow p:last-child {white-space: nowrap;
+            overflow:hidden; text-overflow: clip} /*  */
+
+        /* 택스트 섀도우 : 그림자 수평 오프셋 , 그림자 수직 오프셋, 블러효과, 그림자색상 */
+        #shadow p { font-size: 50px; font-weight: bold; }
+        #shadow p:first-child { text-shadow: 5px 5px 0 gray }
+        #shadow p:nth-child(2) { text-shadow: 5px 5px 5px gray;
+                letter-spacing: 20px }
+        #shadow p:last-child { color: yellow;
+            text-shadow: -5px -5px 5px red;
+            letter-spacing: 20px }
+
+    </style>
+
+</head>
+<body>
+    <h1>CSS 텍스트</h1>
+    <h2>개요</h2>
+    <p>텍스트 크기, 글꼴 지정, 스타일, 텍스트의 정렬들을 다룸</p>
+
+    <h2>font-xxx 속성</h2>
+    <p>font-size : 텍스트의 크기 지정 </p>
+    <p>font-family : 텍스트의 글꼴 지정 </p>
+    <p>font-weight : 텍스트의 진하기 지정  </p>
+    <p>font-style : 텍스트의 스타일 지정 </p>
+    <p>font-xxx 텍스트 단축 표기 :
+        스타일 대소문자변환 굵기 크기 줄간격 글꼴</p>
+
+    <div id="font">
+        <p>노루, 묻힌 못 가득 차 별 당신은 때 이름자를 거외다.</p>
+        <p>마디씩 슬퍼하는 북간도에 아무 무엇인지 거외다.</p>
+        <p>마리아 라이너 별 별빛이 내 내 내린 별 소학교 거외다.</p>
+        <p>오면 토끼, 아스라히 언덕 하나에 까닭입니다.</p>
+        <p>없이 내 잠, 불러 강아지, 속의 아스라히 이름과, 있습니다.</p>
+    </div>
+
+    <h2>줄간격 Line-height </h2>
+    <div id="line">
+        <p>가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.</p>
+        <p>마리아 라이너 별 별빛이 내 내 내린 별 소학교 거외다.마리아 라이너 별 별빛이 내 내 내린 별 소학교 거외다.마리아 라이너 별 별빛이 내 내 내린 별 소학교 거외다.마리아 라이너 별 별빛이 내 내 내린 별 소학교 거외다.마리아 라이너 별 별빛이 내 내 내린 별 소학교 거외다.마리아 라이너 별 별빛이 내 내 내린 별 소학교 거외다.</p>
+        <p>없이 내 잠, 불러 강아지, 속의 아스라히 이름과, 있습니다.없이 내 잠, 불러 강아지, 속의 아스라히 이름과, 있습니다.없이 내 잠, 불러 강아지, 속의 아스라히 이름과, 있습니다.없이 내 잠, 불러 강아지, 속의 아스라히 이름과, 있습니다.없이 내 잠, 불러 강아지, 속의 아스라히 이름과, 있습니다.없이 내 잠, 불러 강아지, 속의 아스라히 이름과, 있습니다.</p>
+    </div>
+
+    <div id="logo">
+        <p>Marvel's Avengers : Infinity War</p>
+        <p>Ant-Man and The Wasp: Quantumania</p>
+        <p>Ant-Man and The Wasp: Quantumania</p>
+    </div>
+
+    <h2>text-align</h2>
+    <p>텍스트의 수평방향 정렬  설정</p>
+
+    <div id="align">
+        <p>시간은 금이라구, 친구!</p>
+        <p>시간은 금이라구, 친구!</p>
+        <p>시간은 금이라구, 친구!</p>
+    </div>
+
+    <h2>text-decoration</h2>
+    <p>텍스트에 여러가지 꾸미기 효과를 부여/제거 </p>
+    <div id="deco">
+        <p>시간은 금이라구, 친구!</p>
+        <p>시간은 금이라구, 친구!</p>
+        <p>시간은 금이라구, 친구!</p>
+    </div>
+
+    <h2>white-space</h2>
+    <p>텍스트의 공백, 들여쓰기, 줄바꿈에 대한 처리</p>
+    <div id="space">
+        <p>가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.</p>
+        <p>가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.</p>
+        <p>가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.</p>
+    </div>
+
+    <h2>text-overflow</h2>
+    <p>특정 영역을 벗어나 줄바꿈이 되지 않은  한줄 텍스트에 대한 처리방법 설정</p>
+    <p>clip : 텍스트를 잘라냄 <br> ellipsis: 잘라낸 부분을 말줄임으로 표시 </p>
+    <p>단, overflow, white-space 와 함께 사용</p>
+
+    <div id="overflow">
+    <p>가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.</p>
+    <p>가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.</p>
+    <p>가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.</p>
+    </div>
+
+    <h2>text-shadow</h2>
+    <p>css3 에추가된 기능</p>
+    <p>텍스트에 그림자 효과를 부여해서 입체감 있는 텍스트 표현</p>
+
+    <div id="shadow">
+        <p>Infinity War</p>
+        <p>Quantumania</p>
+        <p>DoomsDay</p>
+    </div>
+
+
+
+
+
+</body>
+</html>
