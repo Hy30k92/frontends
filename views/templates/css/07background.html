@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 배경관련 속성</title>
+    <style>
+        /* 색상 */
+        #box1 { background-color: red }
+        #box2 { background-color: #008000 }
+        /*#box3 { background-color: rgb(0,0,255)}*/
+        #box3 { background-color: rgba(0,0,255,0.5)} /*rab'a' a=는 투명도*/
+
+        /*배경이미지*/
+        #box4,#box5,#box6,#box7,#box8,#box9,
+        #box10,#box11,#box12,#box13 {
+            width: 450px; height: 200px;
+            border: 1px solid silver;
+        }
+        #box4{ background-image: url("/static/img/plane.png") }
+
+        /*이미지 반복 여부*/
+        #box5{ background-image: url("/static/img/plane.png");background-repeat: repeat-x }
+        #box6{ background-image: url("/static/img/plane.png");background-repeat: repeat-y }
+        #box7{ background-image: url("/static/img/plane.png");background-repeat: no-repeat }
+
+        /*이미지 크기*/
+        #box8{ background-image: url("/static/img/plane.png");
+        background-repeat: no-repeat ;background-size: 250px 250px}
+        /*cover: 이미지 가로/세로 크기중 큰 값을 기준으로
+                 이미지를 최대로 키워 화면에 표시*/
+        #box9{ background-image: url("/static/img/plane.png");
+            background-repeat: no-repeat;background-size: cover}
+        /*contain: 이미지 비율을 최대로 유지하면서
+                   지정한 영억에 모두 표시할 수 있도록 크기 확대*/
+        #box10{ background-image: url("/static/img/plane.png");
+        background-repeat: no-repeat; background-size: contain}
+
+        /*이미지 위치*/
+        #box11{ background-image: url("/static/img/plane.png");
+            background-repeat: no-repeat; background-size: contain;
+            background-position: 100px 10px}
+
+        #box12{ background-image: url("/static/img/plane.png");
+            background-repeat: no-repeat; background-size: contain;
+            background-position: center}
+
+        /* 배경이미지 고정 */
+
+      body { background-image: url("/static/img/plane.png");
+          background-repeat: no-repeat; background-size: contain;
+          background-position: center; background-attachment: fixed;}
+
+        /* background 축약 */
+        #box13 { background: url("/static/img/rubber-duck.png")
+        center / contain no-repeat;}
+
+        /*스프라이트*/
+        #box14, #box16 {
+            /*width: 134px;height: 88px;*/
+            width: 46px;height: 44px;
+            background: url("/static/img/img_navsprites.gif");
+        margin: 25px;}
+        #box14:hover {
+            background: url("/static/img/img_navsprites.gif") 0 -45px;
+            cursor:pointer;}
+
+        #box15 {
+            width:43px; height: 44px;
+            background: url("/static/img/img_navsprites.gif") 43px 0px ;
+            margin: 25px;
+        }
+        #box16 {
+            width:43px; height: 44px;
+            background: url("/static/img/img_navsprites.gif") 87px 0px ;
+            margin: 25px;
+        }
+        #box15:hover {
+            background: url("/static/img/img_navsprites.gif") 43px -45px;
+            cursor:pointer;}
+        #box16:hover {
+            background: url("/static/img/img_navsprites.gif") 87px -45px;
+            cursor:pointer;}
+
+        /*그라디언트*/
+        #box17,#box18,#box19 {
+            width: 450px; height: 150px; margin: 25px 0;
+        }
+        /*linear-gradient(방향, 색1, 색2,...)*/
+        #box17 {background: linear-gradient(to right, blue,pink)}
+        #box18 {background: linear-gradient(white,black)}
+        #box19 {background: linear-gradient(
+                to right, red,orangered,yellow,green,blue,darkblue,purple)}
+
+        /*radial-gradient(방향, 색1,색2...) */
+        #box20 ,#box21{
+            width: 250px; height: 250px;
+            margin: 25px 0 ;
+        }
+        #box20{background: radial-gradient(red,yellow)}
+        #box21{background: radial-gradient(red,orangered,yellow,green,blue,darkblue,purple)}
+
+    </style>
+
+</head>
+<body>
+    <h1>CSS 배경관련 속성</h1>
+    <h2>개요</h2>
+    <p>요소의 배경으로 색상 또는 이미지를 지정할 수 있음</p>
+
+    <h2>색상지정</h2>
+    <p>background-color 속성으로 요소의 배경색을 지정</p>
+
+    <div id="box1">&nbsp;</div>
+    <div id="box2">&nbsp;</div>
+    <div id="box3">&nbsp;</div>
+
+    <h2>이미지 지정</h2>
+    <p>background-image 속성으로 요소의 배경을 이미지로 지정</p>
+    <p>이미지의 크기가 요소 영역의 크기보다 작으면
+        반복적으로 이미지가 채워짐</p>
+
+    <div id="box4">&nbsp;</div>
+    <h2>이미지 반복 설정</h2>
+    <p>background-repeat 속성으로 이미지 반복여부 설정 가능</p>
+
+    <div id="box5">&nbsp;</div>
+    <div id="box6">&nbsp;</div>
+    <div id="box7">&nbsp;</div>
+
+    <h2>이미지 크기 설정</h2>
+    <p>background-size 속성으로 이미지의 크기 설정</p>
+    <p>단, 이미지 크기를 지나치게 키우면
+        이미지가 매끄럽지 못하게 출력될 수도 있음</p>
+    <p>참고로 이미지의 계단현상을 줄이는 기능을
+        anti-aliasing이라 함</p>
+
+    <div id="box8">&nbsp;</div>
+    <div id="box9">&nbsp;</div>
+    <div id="box10">&nbsp;</div>
+
+    <h2>이미지 위치 지정</h2>
+    <p>background-position 속성으로
+        영역내 이미지의 위치 지정</p>
+
+    <div id="box11">&nbsp;</div>
+    <div id="box12">&nbsp;</div>
+
+    <h2>이미지 스크롤 고정</h2>
+    <p>background-attachment 속성으로
+        화면스크롤시 이미지를 고정시킬수 있음,<br>
+        단, body 요소에 배경이미지 관련 속성을 지정</p>
+
+    <h2>background 속성 축약</h2>
+    <p>설정순서는 color, image position, / size repeat, attachment, 순임</p>
+
+    <div id="box13">&nbsp;</div>
+
+    <h2>sprite</h2>
+    <p>스프라이트란 여러 개의 개별이미지를
+        하나의 이미지에 합쳐서 관리하는 이미지를 의미</p>
+    <p>웹 페이지에 이미지가 포함되는 경우
+        이것을 화면에 표시하기 위해 서버에 요청해서
+        해당 이미지를 다운로드 해야함</p>
+
+    <p>사용하는 이미지가 많을수록 서버에 요청하는 횟수 증가
+        => 웹 페이지 로딩시간 증가</p>
+    <p>따라서, 스프라이트를 사용하면
+        서버에 이미지 요청횟수를 단 몇번으로 줄일수 있음</p>
+    <p>또한, 다량의 이미지파일 관리의 용이성도 있음</p>
+
+    <div id="box14">&nbsp;</div>
+    <div id="box15">&nbsp;</div>
+    <div id="box16">&nbsp;</div>
+
+    <h2>그라디언트</h2>
+    <p>두가지 이상의 색 간의 점진적 변화를 표현하는 기법</p>
+    <p>그라디언트의 종류는 선형, 방사형, 각진 원형등이 있음</p>
+
+    <div id="box17">&nbsp;</div>
+    <div id="box18">&nbsp;</div>
+    <div id="box19">&nbsp;</div>
+
+    <div id="box20">&nbsp;</div>
+    <div id="box21">&nbsp;</div>
+</body>
+</html>
