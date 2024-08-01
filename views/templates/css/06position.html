@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS position</title>
+    <style>
+        /* static : 고정위치 - top/left/right/bottom 은 적용 x */
+        #box1 { width: 150px; height: 150px; background: yellow; left: 100px }
+        /* box3은 box2 너비 내에 배치 */
+        #box2 { width: 200px; height: 200px; background: red; }
+        #box3 { background: greenyellow; line-height: 150px }
+
+       /*  absolute - 절대 */
+        #box4 { width: 200px; height: 200px; background: violet;
+            position: absolute; top:100px; left: 100px }
+        #box5 { width: 200px; height: 200px; background: cyan;
+            position: absolute; bottom:100px; right: 100px }
+
+        /* box7 의 기준점을 box6 이 있는 위치로 잡으려면
+            box6의 position을 relative로 설정*/
+        #box6 { width: 200px; height: 200px; background: darkmagenta;
+         position: relative}
+        #box7 { width: 100px; height: 100px; background: peachpuff;
+            position: absolute; top:50px; left: 50px }
+
+        /* relative */
+        #box8 { width: 200px; height: 200px; background: gold;
+            position: relative; top: 100px; left: 100px}
+
+        #box9 { width: 200px; height: 200px; background: darkolivegreen;
+            position: relative; bottom: 50px; right: 50px}
+        /* 부모요소 내 자식요소는
+            부모요소의 위치가 바뀌면 같이 위치가 바뀜*/
+        #box10 { width: 200px; height: 200px; background: darkgoldenrod;
+            color: white; margin: 100px;}
+        #box11 { width: 100px; height: 100px; background: darksalmon;
+            color: white; position: relative; top: 50px; left: 50px}
+
+        /* fixex */
+        #box12 { width: 100px; height: 200px; background: darkblue;
+            color: white; position: fixed; top:100px; right: 100px}
+
+        /* z-index */
+        #box13 { width: 500px; height: 400px;
+            border: 1px solid black;position: relative }
+        #box14,#box15,#box16 { width: 200px; height: 200px;
+            position:absolute }
+        #box14 { background: mediumblue; top:50px; left:50px; z-index: 999 }
+        #box15 { background: mediumaquamarine; top:100px; left:100px; z-index: 555}
+        #box16 { background: mediumorchid; top:150px; left:150px }
+
+    </style>
+</head>
+<body>
+    <h1>CSS position</h1>
+    <h2>개요</h2>
+    <p>지금까지는 margin/padding 또는
+        인라인/블록 요소의 특성에 의해
+        부분적으로나 요소의 위치를 지정할 수 있었음</p>
+    <p>반면, position이라는 속성을 이용하면
+        html 요소들의 위치를 좌표등으로 결정할 수 있음</p>
+    <p>즉, top/left/right/bottom 등의 속성으로
+        요소의 위치를 정할 수 있음</p>
+
+    <h2>static position</h2>
+    <p>기본적인 요소 배치순서에 따라 위->아래, 왼쪽->오른쪽으로
+        배치되며, 부모-자식 관계의 요소는 부모요소에 따라 배치됨</p>
+
+    <div id="box1">#box1</div>
+
+    <div id="box2">#box2
+        <div id="box3">#box3</div>
+    </div>
+
+    <h2>absolute position</h2>
+    <p>조상요소(body) 또는 부모요소를 기준으로
+        top/left/right/bottom만큼 요소를 이동시켜 배치</p>
+    <p>단, 부모요소를 기준으로 하위요소를 배치하려면
+        부모요소의 position은 relative이어야 함</p>
+
+    <div id="box4">#box4</div>
+    <div id="box5">#box5</div>
+    <div id="box6">#box6
+        <div id="box7">#box7</div>
+    </div>
+
+    <h2>relative position</h2>
+    <p>요소 자신이 있는 위치를 기준으로
+        top/left/right/bottom만큼 요소를 이동시켜 배치</p>
+    <div id="box8">#box8</div>
+    <div id="box9">#box9</div>
+
+    <div id="box10">#box10
+        <div id="box11">#box11</div>
+    </div>
+
+    <h2>fixed position</h2>
+    <p>뷰포트(웹페이지 가시영역)를 기준으로
+        top/left/right/bottom만큼 요소를 이동시켜 배치</p>
+    <p>따라서, 브라우져를 스크롤하더라도
+        뷰포트의 특정위치에 요소가 배치됨</p>
+
+    <div id="box12">#box12 (fixed)</div>
+
+    <h2>z-index</h2>
+    <p>요소를 배치하다보면 설정된 위치나 방식에 따라
+        서로 겹칠수 있음</p>
+    <p>즉, 먼저 만들어진 요소는 나중에 만들어진 요소보다
+        밑(뒤)에 배치됨</p>
+
+    <p>요소가 쌓이는 순서를 지정하고 싶다면
+        z-index를 지정하면 됨</p>
+    <p>z-index값이 클수록 앞쪽에 위치함</p>
+
+    <div id="box13">#box13
+        <div id="box14">#box14</div>
+        <div id="box15">#box15</div>
+        <div id="box16">#box16</div>
+    </div>
+
+
+
+
+
+
+
+</body>
+</html>
