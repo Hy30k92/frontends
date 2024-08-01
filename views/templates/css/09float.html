@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 레이아웃 - float</title>
+    <style>
+        #wrapper{border: 1px solid red;  width: 900px ; margin: 0 auto}
+        #banner{width: 900px; height: 150px; background: palegoldenrod }
+        #box1{width: 300px; height: 300px; background: #bce55c; float:left }
+        #article1, #article2 { width: 600px; height: 150px; }
+        #article1{background: #b3d4fc; float: right }
+        #article2{background: #b3d4aa;float: right }
+
+    /*레이아웃 실습*/
+        #wrapper2 { width: 960px; border:1px solid orange }
+        header {background: yellow; height: 100px; }
+        nav {width: 20%; height: 500px; background: lightgreen; float: left}
+        article{ width: 60%; height: 500px; background: #b3d4fc;float: left}
+        aside{ width: 20%; height: 500px; background: #e4f7da; float: right }
+        footer{ width: 960px; height: 100px; background: lightyellow;}
+        .clearfix2{ clear: both }
+
+
+    </style>
+
+</head>
+<body>
+    <h1>CSS 레이아웃 - float</h1>
+    <h2>개요</h2>
+    <div><img src="/static/img/float01.png"></div>
+    <p>일반적인 레이아웃 흐름은 마크업이 작성된 순서에 따라
+        요소는 위에서 아래로, 왼쪽에서 오른쪽으로 나열됨</p>
+    <p>하지만, float이라는 속성을 이용하면
+        특정요소를 기본적인 배치흐름에서 벗어나
+        페이지의 왼쪽이나 오른쪽으로 이동시킬 수 있음</p>
+    <p>즉, 문서의 흐름과 관계없이 화면배치를 유연하게 할 수 있음</p>
+    <p>복잡한 형태의 레이아웃을 구성하는데 필요한 핵심 속성</p>
+
+    <div id="wrapper">
+        <div id="banner">&nbsp;</div>
+        <div id="box1"></div>
+        <div id="article1">가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.가을로 이네들은 별 언덕 하나에 이름과 봅니다.</div>
+        <div id="article2">마디씩 슬퍼하는 북간도에 아무 무엇인지 거외다. 청춘이 내 별에도 멀리 나는 쉬이 같이 지나가는 그러나 까닭입니다. 하나에 묻힌 사랑과 책상을 밤을 벌레는 패, 이름을 위에도 버리었습니다. 하나에 쓸쓸함과 이제 이웃 별 헤일 까닭입니다. 이국 이름과 내린 듯합니다. 것은 경, 말 어머님, 이름을 있습니다.</div>
+    </div>
+
+    <h2>clear</h2>
+    <p>float 속성이 지정된 요소는 문서의 일반적인 흐름에서
+        벗어난 상태이기 때문에 뒤를 따르는
+        후속요소들은 다소 괴상한? 모습을 보여 줌</p>
+    <p>이러한 문제를 해결하기 위해서 clear 속성을 적용해
+        특정 요소 이후로는 float의 영향을 받지않도록 해야 함</p>
+
+    <h2>Holy Grail Layout</h2>
+    <div id="wrapper2">
+        <header>header</header>
+        <nav>side menu</nav>
+        <article>main</article>
+        <aside>AD</aside>
+        <div class="clearfix2"></div>
+        <footer>footer</footer>
+    </div>
+
+</body>
+</html>
