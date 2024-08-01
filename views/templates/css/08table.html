@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS table</title>
+    <style>
+        /*테이블 테두리 설정*/
+        table {width:550px; border: 1px solid black;
+        border-collapse: collapse;}
+        .td1 th, .tb1 td {border: 1px solid black;
+            padding: 10px; text-align: center}
+
+        /*테이블 크기 고정*/
+        .tb2 { width: 350px; table-layout: fixed}
+        .tb2 td:first-child { width: 15% }
+        .tb2 td:last-child { overflow: hidden; text-overflow: ellipsis }
+
+        /*테이블 내용 수직 정렬*/
+        .tb3 { height: 300px}
+        .tb3 td { border: 1px solid black }
+        .tb3 td:first-child{ vertical-align: top}
+        .tb3 td:nth-child(2){ vertical-align: bottom}
+        .tb3 td:last-child{ vertical-align: center}
+
+        /*display 속성으로 테이블처럼 보이게하기*/
+        /*/display:table - 블록요소를 테이블처럼 보이게 함*/
+        /*/display:table-row - 블록요소를 테이블 행처럼 보이게 함*/
+        /*/display:table-cell - 블록요소를 테이블 열처럼 보이게 함*/
+        #tb4 {width: 500px; border-collapse: collapse  }
+        #tb4 .tr { display: table-row }
+        #tb4 .th,  #tb4 .td { display: table-cell;
+                border: 1px solid black; padding: 5px ;
+                width: 125px; }
+        #tb4 .th { font-weight: bold; text-align: center }
+
+        /*테이블 세련되게 꾸미기*/
+        #tb5 {border-top: 3px solid black}
+        #tb5 {border-bottom: 3px solid black}
+        #tb5, #tb5 th, #tb5 td {
+            border-left: none; border-right: none;}
+        #tb5 td ,#tb5 th { text-align: center; height: 30px}
+
+        #tb5 tr:nth-child(1) {background: beige}
+        /*#tb5 tr:nth-child(odd){ background: ivory }*/
+        #tb5 tr:nth-child(2n+3){ background: ivory } /*3행부터 홀수행 대상*/
+        #tb5 tr:nth-child(even){ background: cornsilk } /*짝수행 대상*/
+        #tb5 tr:hover { background: thistle }
+        #tb5 tr:nth-child(n+2):hover { background: darksalmon; cursor: pointer } /*2행부터 선택*/
+
+    </style>
+
+</head>
+<body>
+    <h1>CSS table</h1>
+    <h2>개요</h2>
+    <p>테이터를 2차원의 표 형태로 나타내는데 사용</p>
+
+    <h2>border</h2>
+    <p>테이블의 테두리를 나타내는데 사용</p>
+    <p>border-collapse 속성으로 테이블의
+        테두리를 어떻게 표현할지 설정</p>
+    <p>border-spacing 속성으로 테이블의
+        테두리들의 간격을 설정</p>
+
+    <table class="tb1">
+        <tr><th>이름</th><th>국어</th><th>영어</th><th>수학</th></tr>
+        <tr><td>혜교</td><td>99</td><td>98</td><td>99</td></tr>
+        <tr><td>지현</td><td>54</td><td>77</td><td>87</td></tr>
+        <tr><td>수지</td><td>78</td><td>45</td><td>32</td></tr>
+    </table>
+
+    <h2>테이블 레이아웃</h2>
+    <p>테이블의 내용에 따라
+        테이블의 크기를 어떻게 나타낼 것인지 결정</p>
+    <p>셀의 크기보다 많은 내용을 포함시키면
+        테이블(해당 셀)의 크기가 늘어날 수 있음</p>
+    <p>이러한 상황을 방지하려면 table-layout 속성을 사용</p>
+    <p>테이블 크기를 고정시켰을때 넘쳐나는 내용은
+        overflow 속성으로 적절히 처리 가능</p>
+
+    <table class="tb2">
+        <tr><td>내용</td>
+            <td>123456789012345678901234567890123456789012345678901234567890</td></tr>
+    </table>
+
+    <h2>테이블 내용 정렬</h2>
+    <p>테이블 상의 내용을 위, 아래, 가운데로 정렬하고 싶으면
+        vertical-align 속성을 사용</p>
+
+    <table class="tb3">
+        <tr><td>1234567890</td><td>1234567890</td>
+            <td>1234567890</td></tr>
+        <tr><td>1234567890</td><td>1234567890</td>
+            <td>1234567890</td></tr>
+        <tr><td>1234567890</td><td>1234567890</td>
+            <td>1234567890</td></tr>
+    </table>
+
+    <h2>display 속성으로 테이블 만들기</h2>
+    <p>display 속성은 일반적으로 인라인요소나 블록요소를
+        변환해서 레이아웃을 구성하는데 사용</p>
+    <p>하지만, display 속성에 table을 지정하면
+        블록요소가 테이블의 성질을 가지게 할 수 있음</p>
+
+    <div id="tb4">
+        <div class="tr">
+            <div class="th">이름</div>
+            <div class="th">국어</div>
+            <div class="th">영어</div>
+            <div class="th">수학</div>
+        </div>
+        <div class="tr">
+            <div class="td">혜교</div>
+            <div class="td">99</div>
+            <div class="td">98</div>
+            <div class="td">99</div>
+        </div>
+    </div>
+
+    <h2>테이블 예쁘게 꾸미기</h2>
+    <p>테이블 짝수행과 홀수행의 배경색을 다르게 지정
+        - 얼룩말 무늬, 스트라이트 무늬</p>
+    <p>hover 클래스 선택자를 이용해서 현재 행의
+        배경색을 다르게 표시</p>
+    <p>테이블 테두리도 행기준 아래쪽에만 표시하도록 함</p>
+
+    <table id="tb5">
+        <tr><th>이름</th><th>국어</th><th>영어</th><th>수학</th></tr>
+        <tr><td>혜교</td><td>99</td><td>98</td><td>99</td></tr>
+        <tr><td>지현</td><td>54</td><td>77</td><td>87</td></tr>
+        <tr><td>수지</td><td>78</td><td>45</td><td>32</td></tr>
+        <tr><td>혜교</td><td>99</td><td>98</td><td>99</td></tr>
+        <tr><td>지현</td><td>54</td><td>77</td><td>87</td></tr>
+        <tr><td>수지</td><td>78</td><td>45</td><td>32</td></tr>
+        <tr><td>혜교</td><td>99</td><td>98</td><td>99</td></tr>
+        <tr><td>지현</td><td>54</td><td>77</td><td>87</td></tr>
+        <tr><td>수지</td><td>78</td><td>45</td><td>32</td></tr>
+    </table>
+</body>
+</html>

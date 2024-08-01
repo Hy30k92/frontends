@@ -39,3 +39,7 @@ async def position(req: Request):
 @css_router.get('/background')
 async def background(req: Request):
     return templates.TemplateResponse('css/07background.html', {'request': req})
+
+@css_router.get('/table')
+async def table(req: Request):
+    return templates.TemplateResponse('css/08table.html', {'request': req})
