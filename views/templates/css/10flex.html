@@ -2,9 +2,97 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>CSS flex</title>
+    <title>CSS flex 레이아웃</title>
+
+    <style>
+        /*가운데정렬*/
+        .centerme {
+            height: 200px;
+            background: indigo;
+            color: #ebebeb;
+            /*text-align: center;padding-top:180px */
+        display: flex; justify-content: center;align-items: center}
+
+        /*메뉴구성*/
+        a:link {color: #ebebeb}
+        a:visited {color: #ebebeb}
+        .menus{ background: indigo; color: #ebebeb;
+            min-height: 44px; display: flex; align-items: center;
+            padding: 0 16px; /*flex-direction: row*/
+        justify-content: space-evenly}
+
+        /*Holy Grail Lauout*/
+        .container { display: flex; flex-direction: column;
+            border: 1px solid red; width: 1000px}
+
+        header, footer {background: #333; color:white;
+            height: 100px}
+        nav, aside { background: #f0f0f0; height: 300px;width: 200px }
+        main{ background: #b3d4aa; height: 300px; flex: 1 }
+        .main-content { display:flex; flex-direction: row; flex: 1}
+
+    </style>
+
 </head>
 <body>
     <h1>CSS flex</h1>
+    <h2>개요</h2>
+    <p>뷰포트나 요소의 크기가 불명확하거나 동적으로 변할때에도
+        효율적으로 요소를 배치,정렬,분산할 수 있는 방법을 제공하는
+        CSS3의 새로운 레이아웃 방식</p>
+    <p>flexbox layout의 장점은 '복잡한 계산없이 요소의 크기와 순서를
+        유연하게 배치할 수 있다라는 것임</p>
+    <p>정렬,방향,순서,크기등을 유연하게 조절할 수 있기 때문에
+        별도의 분기처리를 줄일수 있고, CSS만으로 다양한 레이아웃 구현가능</p>
+    <p>flexbox froggy - flexboxfroggy.com</p>
+
+    <h2>기본 개념</h2>
+    <div><img src="/static/img/flexbox01.png"></div>
+    <p>Flex Container: Flexbox 레이아웃을 적용할 부모 요소</p>
+    <p>Flex Items: Flex Container 내부의 자식 요소들</p>
+
+    <h2>Flex Container 속성</h2>
+    <p>display: flex; 또는 display: inline-flex;로 설정</p>
+    <p>flex-direction: 주 축의 방향 설정 (row, column, row-reverse, column-reverse)</p>
+    <p>flex-wrap: 아이템 줄바꿈 설정 (nowrap, wrap, wrap-reverse)</p>
+    <p>justify-content: 주 축 방향으로 아이템 정렬 (flex-start, flex-end, center, space-between, space-around)</p>
+    <p>align-items: 교차 축 방향으로 아이템 정렬 (stretch, flex-start, flex-end, center, baseline)</p>
+    <p>align-content: 여러 줄일 때 교차 축 방향 정렬 (stretch, flex-start, flex-end, center, space-between, space-around)</p>
+
+    <h2>Flex Items 속성</h2>
+    <p>flex-grow: 남은 공간을 차지하는 비율</p>
+    <p>flex-shrink: 공간이 부족할 때 줄어드는 비율</p>
+    <p>flex-basis: 아이템의 기본 크기</p>
+    <p>flex: grow, shrink, basis를 한 번에 지정 (예: flex: 1 1 auto;)</p>
+    <p>align-self: 개별 아이템의 교차 축 정렬 (auto, flex-start, flex-end, center, baseline, stretch)</p>
+    <p>order: 아이템의 순서 변경</p>
+
+    <h2>수직으로 텍스트 정렬하기</h2>
+    <div class="centerme">Hello, FelxBox!!</div>
+
+    <h2>header 메뉴 배치하기</h2>
+    <header class="menus">
+        <a href="#" class="item">Home</a>
+        <a href="#" class="item">About Us</a>
+        <a href="#" class="item">Products</a>
+        <a href="#" class="item">Policy</a>
+        <a href="#" class="last-item">Contact Us</a>
+    </header>
+
+    <h2>Holy Grail 레이아웃</h2>
+    <div class="container">
+        <header>Header</header>
+        <div class="main-content">
+            <nav>Left Sidebar</nav>
+            <main>Main Content</main>
+            <aside>Right Sidebar</aside>
+        </div>
+        <footer>Footer</footer>
+    </div>
+
+
+
+
+
 </body>
 </html>
