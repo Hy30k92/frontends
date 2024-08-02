@@ -4,50 +4,104 @@
     <meta charset="UTF-8">
     <title>프로젝트 1</title>
     <style>
-        /* 헤더 토토로/리스트 */
-        #totoro {display: inline}
-        #hli {list-style: none;padding: 0;margin: 0; display: inline; text-align:right;
-            position: absolute; right:0}
-        #hli li{ display: inline;margin-right: 10px }
-        /* 로그인 */
-        #login { display: inline;  }
-        #serch { background: lightpink; height: 30px;}
-        /*메인 카테고리 / 베너*/
-        #cate {list-style-type: none;}
-        #cate {margin-right:900px}
-        #cate li {list-style: none ; border:2px solid black; margin: 0}
-        #banner p {display: inline; border: 2px solid black; padding: 75px 300px;
-                    position: absolute; top: 192px ;right: 5px}
-        #banner > ul > li {display: inline; margin-right: 10px; background: lightblue;
-                    }
+        /*header, navm mainm footer 등을
+         중앙에 배치하기위해 컨테이너 요소 생성*/
+        #container{ border: 2px solid black; width: 1080px;
+        margin: 0 auto}
 
-        #prd {list-style: none; display: inline;}
-        #prd li{margin: 0 ; display: inline}
+        /* header */
+        header { height: 100px; }
+        header h1 {background: #cccccc; width: 150px;
+            text-align: center; padding: 7px 0 ;
+            margin-left: 20px;float: left}
+
+        header ul { list-style: none; padding: 0; float: right;
+                    margin-right: 10px}
+        header ul li { display: inline-block; padding: 0 1px;}
+        header ul li:after { content: ' |' }
+        header ul li:last-child:after { content: " "}
+
+        header div { float: left; margin-top: 5px; margin-left: 15px }
+        .clear { clear: both}
+
+        /* nav */
+        nav{ background: #cccccc; height: 35px;}
+
+        nav input { border: 1px solid black;
+                width: 300px; margin-left: 20px; padding: 5px}
+        nav select { width: 150px; padding: 4px }
+        nav button { background: #999999;color: white;width: 100px; font-size: 15px; border-radius: 8px;
+                    padding: 2px;}
+        .navgroup {display: table-cell; vertical-align: middle; height: 35px}
+
+        /*메인 카테고리 / 베너*/
+        main{ border: 1px solid violet }
+
+        #line{height: 10px}
+        .content { display: flex; align-items: flex-start; margin: 25px auto }
+        #cate {display: inline-block ; float: left}
+        #cate li {list-style: none ; border:1px solid black; padding: 10px 70px;  margin-left: 180px;
+        border-collapse: collapse; min-width: 120px}
+        #banner {position: relative; margin-left: 20px ;}
+        #banner p {display: inline-block; border: 2px solid black; padding: 110px 300px;
+            min-width: 500px;min-height: 75px;margin-left:20px }
+        #li4 {display: inline-block;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            bottom: 30px;
+            right: 10px; }
+        #li4> li { width: 30px;height: 30px; padding-top: 5px;display: inline-block;margin-right: 10px;
+                text-align: center ;background: lightblue;}
+
+        /*프로덕트*/
+        footer { border: 1px solid blue }
+
+        #products{ margin-left: 220px }
+        #prd {list-style: none; padding: 0; margin-left: 300px; }
+        #prd li{text-align: center; margin-right: 85px ; display: inline-block;}
+        #prd li img{ display:block;margin: 0 auto;  }
+
+        /*foot*/
+        #foot{flex:1;}
+            #about,#social,#service{
+            display: inline-block;
+            vertical-align: top;
+                padding-left: 200px;
+        }
+        #copy {text-align: center; }
+
     </style>
 
 </head>
 <body>
+    <div id="container">
     <div id="wrap">    </div>
     <form method="post">
             <header>
-            <img id=totoro src="/static/img/totoro.png" alt="totoro" width="100">
+           <h1 id="logo">LOGO</h1>
+                <div id="login"><a href="#">login</a> or <a href="#">Create Account</a></div>
                 <ul id="hli">
                     <li><a href="/html/contact">contact</a></li>
                     <li><a href="/html/store locator">store locator</a></li>
                     <li><a href="/html/support">support</a></li>
                     <li><a href="/html/CART">CART</a></li>
                 </ul>
-            <div id="login"><a href="#">login</a> or <a href="#">Create Account</a></div>
             </header>
-        <nav>
-            <div id="serch"><input type="text"> <select name="findtype">
-            <option value="Category">Category</option></select> <button type="button" id="fidnbtn">SEARCH</button>
+        <nav class="clear">
+            <div class="navgroup">
+                <input type="text">
+                <select name="findtype">
+            <option value="Category">Category</option>
+                </select>
+                <button type="button" id="findbtn">SEARCH</button>
             </div>
         </nav>
-
+        <div id="line"></div>
         <main>
-            <section>
-                <aside>
+            <section class="content">
+                    <div>
+                        <aside>
                     <ul id="cate">
                         <li>ALL categories</li>
                         <li>CateGory1</li>
@@ -57,58 +111,58 @@
                         <li>CateGory5</li>
                         <li>CateGory6</li>
                     </ul>
+
                 </aside>
+                    </div>
                 <div id="banner">
                     <p>[ PROMOTIONAL IMAGES ROTATE HERE]</p>
-                    <ul><li>1</li><li>2</li><li>3</li><li>4</li></ul>
-
+                        <ul id="li4">
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                        </ul>
                 </div>
-
-
-
-                </thead>
-            </table>
             </section>
             <section>
-                <div id="products"><h2>Today's Specials</h2></div>
+                <div id="products"><h4>Today's Specials</h4></div>
             <Ul id="prd">
-                <li><img src="/static/img/totoro.png" width="50"><a href="#">product1</a></li>
-                <li><img src="/static/img/totoro.png" width="50"><a href="#">product2</a></li>
-                <li><img src="/static/img/totoro.png" width="50"><a href="#">product3</a></li>
-                <li><img src="/static/img/totoro.png" width="50"><a href="#">product4</a></li>
-                <li><img src="/static/img/totoro.png" width="50"><a href="#">product5</a></li>
-                <li><img src="/static/img/totoro.png" width="50"><a href="#">product6</a></li>
+                <li><img src="/static/img/totoro.png" width="70"><a href="#">product1</a></li>
+                <li><img src="/static/img/totoro.png" width="70"><a href="#">product2</a></li>
+                <li><img src="/static/img/totoro.png" width="70"><a href="#">product3</a></li>
+                <li><img src="/static/img/totoro.png" width="70"><a href="#">product4</a></li>
+                <li><img src="/static/img/totoro.png" width="70"><a href="#">product5</a></li>
+                <li><img src="/static/img/totoro.png" width="70"><a href="#">product6</a></li>
             </Ul>
             </section>
         </main>
-
+<hr>
         <footer>
-            <div>
-            <ul>
-                <li><strong>ABOUT us</strong></li>
+            <div id="foot">
+            <ul id="about">
+                <li><strong>ABOUT US</strong></li>
                 <li>Company</li>
                 <li>News</li>
                 <li>Jobs</li>
                 <li>Policies</li>
                 <li>Contact</li>
             </ul>
-                <ul>
+                <ul id="social">
                     <li><strong>SOCIAL</strong></li>
                     <li>Facebook</li>
                     <li>Twitter</li>
                     <li>Try our app</li>
                 </ul>
-                <ul>
+                <ul id="service">
                     <li><strong>SERVICE</strong></li>
                     <li>FAQ</li>
                     <li>Live support</li>
                     <li>Site map</li>
                 </ul>
             </div>
-            <div>Copyright &copy; 2024.hyeok. All Right Reserved.</div>
+            <div id="copy">Copyright &copy; 2024.hyeok. All Right Reserved.</div>
         </footer>
-
         </form>
-
+    </div>
 </body>
 </html>
