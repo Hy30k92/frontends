@@ -63,13 +63,9 @@
         #prd li img{ display:block;margin: 0 auto;  }
 
         /*foot*/
-        #foot{flex:1;}
-            #about,#social,#service{
-            display: inline-block;
-            vertical-align: top;
-                padding-left: 200px;
-        }
-        #copy {text-align: center; }
+        footer ul {float:left; list-style: none; margin-bottom: 100px}
+        footer ul h3 { margin: 0 }
+        footer .copy {text-align: center; color:gray }
 
     </style>
 
@@ -138,9 +134,8 @@
         </main>
 <hr>
         <footer>
-            <div id="foot">
             <ul id="about">
-                <li><strong>ABOUT US</strong></li>
+                <h3>ABOUT US</h3>
                 <li>Company</li>
                 <li>News</li>
                 <li>Jobs</li>
@@ -148,19 +143,18 @@
                 <li>Contact</li>
             </ul>
                 <ul id="social">
-                    <li><strong>SOCIAL</strong></li>
+                    <h3>SOCIAL</h3>
                     <li>Facebook</li>
                     <li>Twitter</li>
                     <li>Try our app</li>
                 </ul>
                 <ul id="service">
-                    <li><strong>SERVICE</strong></li>
+                    <h3>SERVICE</h3>
                     <li>FAQ</li>
                     <li>Live support</li>
                     <li>Site map</li>
                 </ul>
-            </div>
-            <div id="copy">Copyright &copy; 2024.hyeok. All Right Reserved.</div>
+             <div class="copy clear" >Copyright &copy; 2024.hyeok. All Right Reserved.</div>
         </footer>
         </form>
     </div>
