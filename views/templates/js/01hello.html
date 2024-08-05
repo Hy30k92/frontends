@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>자바스크립트 개요</title>
+    <script>
+        // alert('Hello,World!! in head');
+    </script>
+</head>
+<body onload="sayHello()">
+    <h1>JavaScript 사용법</h1>
+    <h2>개요</h2>
+    <p>자바스크립트를 실행하는 방법은 크게 3가지 - 인라인, 내부, 외부</p>
+
+    <h2>인라인 방식</h2>
+    <p>
+        특정 html 요소에 따른 이벤트 속성을 이용해서
+        자바스크립트 코드가 언제 실행할지를 지정함
+    </p>
+
+    <div><button type="button"
+                 onclick="alert('Hello,World!!')">Hello</button></div>
+
+    <h2>내부방식</h2>
+    <p>head나 body에 script라는 태그 안에 실행할
+        자바스크립트 코드를 작성함</p>
+
+    <p>그런데, head 안에 스크립트를 작성하면, 브라우저가 body의
+        html 코드를 읽기 전에 스크립트를 먼저 실행함.</p>
+
+    <p>따라서, 브라우저의 화면은 늦게 뜨므로
+        UI가 썰렁할 수 있음</p>
+
+    <p>반면, body 맨 끝에 스크립트를 작성하면,
+        브라우저가 body의 html코드를 모두 읽은 후에
+        스크립트를 실행함. (추천!!)</p>
+
+    <p>따라서, 브라우저의 화면이 다 뜬체로
+        스크립트가 실행되므로 페이지 로딩속도가 빨라짐</p>
+
+    <h2>외부방식</h2>
+    <p>자바스크립트 코드가 포함한 파일을 작성하고
+        이것을 head나 body에서 참조하도록 하는 방식</p>
+
+    <p>이것 역시, 특별한 경우를 제외하고는
+        body에서 참조하는 것을 추천!</p>
+
+    <div><button type="button"
+                 onclick="sayhello2()>Hello"></button></div>
+
+    <h2>콘솔에서 자바스크립트 실행 및 디버깅</h2>
+    <p>작성한 자바스크립트 코드를 html에 삽입하기 전에
+        확인 및 오류체크를 목적으로 브라우저 내 콘솔에서
+        테스트 해볼 수 있음</p>
+
+    <p>브라우저 내 콘솔은 개발자 도구에 있음 - F12</p>
+
+
+    <script>
+        function sayHello(){
+        alert('Hello,World!! in Body');
+        }
+    </script>
+    <script src="/static/js/hello.js"></script>
+</body>
+</html>

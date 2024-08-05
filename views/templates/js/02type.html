@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>변수와 자료형</title>
+</head>
+<body>
+    <h1>변수와 자료형</h1>
+    <h2>변수variable와 상수constant</h2>
+    <p>변수는 데이터를 담는 그릇 - var, let 으로 선언</p>
+    <p>상수는 변하지 않는 값을 담은 그릇 - const 으로 선언</p>
+    <p>변수/상수 선언시 자료형을 기술할 필요 x</p>
+
+    <p>변수 선언시 var 이나 let(ES6에서 추가)을 사용</p>
+    <p>실무에서는 오류를 최소화하기 위해 let 사용을 추천!</p>
+    <p>자바스크립트에서는 각 문장의 끝은 ;으로 마무리해야 함</p>
+
+    <script>
+        document.write("1 + 2= ", 1 + 2, "<br>");
+
+        var x = 10;
+        var y = 2;
+        document.write("x + y = ", x + y, "<br>");
+
+        let z; // 변수 초기화 없이 출력시 undefined 표시
+        document.write("z=", z, "<br>");
+
+        var x = 100; // (var) 위에서 이미 선언한 변수를 다시 선언해도 문제 x
+        document.write("x + y = ", x + y, "<br>");
+
+        // let z = 50;  // (let) 위에서 이미 선언한 변수를 다시 선언하면 문제 o
+        // document.write("z=", z, "<br>");
+
+    </script>
+    <h2>자료형</h2>
+    <p>자바스크립트 자료형에는 Number, String, Boolean,
+        Null, Undefined, BigInt, 객체형등이 있음</p>
+
+    <h2>숫자형</h2>
+    <p>Number형으로 정수, 실수등을 다룰수 있음</p>
+    <p>BigInt형은 기존 정수보다 더 많은 범위의 수를 다룰수 있음</p>
+    <p>한편, Number형에는 일반적인 숫자외에 추가적으로
+        NaN(not a number), Infinity/-Infinity등의
+        특수숫자값을 사용할 수 있음</p>
+    <p>따라서, 말도 안되는 연산에도 오류는 발생하지 않음!</p>
+
+    <script>
+        x = 10;
+        y = 3;
+        document.write('10 % 3 = ', x % y, '<br>');
+
+        x = 3.14
+        let r = 5
+        document.write('3.14 x r^2 =', x  * r * r, '<br>' )
+
+        y = 1;
+        document.write('1 ÷ 0 =', y / 0, '<br>');
+
+        y = -1;
+        document.write('-1 ÷ 0 =', y / 0, '<br>');
+
+        y = 'Hello';
+        document.write('hello ÷ 0 =', y / 0, '<br>');
+
+        y = 123456789123456789123456789123456789123456789123456789;
+        document.write('완전 큰 숫자 =', y, '<br>');
+        // 숫자 가 지수 표기로 생략되어 출력
+
+        y = BigInt('123456789123456789123456789123456789123456789123456789');
+        document.write('완전 큰 숫자 =', y, '<br>');
+    </script>
+
+
+        <h2>문자형</h2>
+        <p>단일문자나 단일문자가 여러개 모인 문자열을 다룰때 사용</p>
+        <p>문자열을 정의할때는 '', "", `` 등을 이용함</p>
+    <script>
+        let say1 = 'hello';
+        let say2 = "hello";
+        let say3 = `hello`;
+
+        document.write(say1, say2, say3, '<br>');
+        // 문자열들에 + 를 사용하면 문자열을
+        // 모두 연결해서 하나의 문자열로 출력할 수 있음
+        document.write(say1 + ' '+ say2 +' '+ say3, '<br>');
+
+        // 문자열들을 여러 줄에 나눠 출력하려면 \n 대신 <br> 사용
+        // 동해물과
+        // 백두산이
+        // 마르고 닳도록
+
+        let koreasong = '동해물과 백두산이 마르고 닳도록';
+        document.write(koreasong, '<br>');
+
+        koreasong = '동해물과<br>백두산이<br>마르고 닳도록';
+        document.write(koreasong, '<br>');
+
+        koreasong = `
+        동해물과
+        백두산이
+        마르고 닳도록`
+        document.write(koreasong, '<br>');
+
+        // 템플릿 리터럴 : 주로 문자열과 변수를 합쳐서 출력시 유용
+        let a = 10;
+        let b = 20;
+        document.write(`${a} + ${b} = ${a + b}`, '<br>');
+
+        // 문자char는 문자열string의 부분집합임
+        // 문자열에서 개별 문자를 추출해서 어떤 작업을 할 수 있음
+        // 문자열 선택 연산자
+        let say = 'Hello, World!!';
+        document.write(`say = Hello,World` , '<br>');
+        document.write(
+            `say[0] = ${say[0]} , $say[1] = ${say[1]}`, '<br>');
+    </script>
+
+    <h2>Boolean형</h2>
+    <p>논리형의 일종으로 true, false 등의 논리값만 존재</p>
+    <p>주로 긍정(true), 부정(false)을 나타내는 값에 사용</p>
+
+    <script>
+        document.write(`10 > 20 : ${10 > 20}`, '<br>');
+        document.write(`10 < 20 : ${10 < 20}`, '<br>');
+        document.write(`10 == 20 : ${10 === 20}`, '<br>'); // 엄격한 동등 비교 (동일성)
+        document.write(`10 == 20 : ${10 == 20}`, '<br>'); //느슨한 동등 비교 (동등성)
+        document.write(`10 == 10 : ${10 == '10'}`, '<br>');
+        document.write(`10 == 10 : ${10 === '10'}`, '<br>');
+        document.write(`10 != 20 : ${10 != 20}`, '<br>');
+    </script>
+
+
+
+    <h2>Null</h2>
+    <p>null 값만 다루는 자료형</p>
+    <p>null은 존재하지 않는 값, 비어 있는 값,
+        알 수 없는 값을 나타내는데 사용</p>
+    <script>
+        let name = null; // 변수가 선언되어있지않음
+
+        document.write(`이름 : ${name}`, '<br>');
+    </script>
+
+
+    <h2>undefined</h2>
+    <p>undefined 값만 다루는 자료형</p>
+    <p>undefined는 변수는 선언했지만,
+        값이 할당되지 않은 상태를 나타내는데 사용</p>
+
+    <script>
+        name = undefined ; //변수가 선언되었지만, 초기화가 안됨
+
+        document.write(`이름 : ${name}`, '<br>');
+    </script>
+
+    <h3>성적 처리 프로그램 v1</h3>
+    <p>이름, 국어, 영어, 수학을 초기화시켜서
+        총점, 평균을 계산한 뒤 결과 출력 </p>
+
+    <script>
+        let kor = 99;
+        let eng = 98;
+        let mat = 99;
+        let tot = kor + eng + mat;
+        let avg = tot / 3;
+
+        document.write( `${kor} + ${eng} +${mat} = 총점 : ${tot} 평균 : ${avg}`, '<br>');
+
+    </script>
+
+
+</body>
+</html>
