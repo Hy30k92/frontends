@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS bootstrap</title>
+    <link rel="stylesheet" href="/static/css/bs5/bootstrap.min.css">
+    <style>
+        .bg{ background: ivory; border: 1px solid silver}
+    </style>
+</head>
+<body>
+    <h1>CSS bootstrap</h1>
+    <h2>개요</h2>
+    <p>트위터에 근무하던 마크 오토와 제이콥 손튼이 개발한 UI라이브러리<br>
+        모바일 환경에 적합한 반응형 웹을 쉽게 개발하고,
+        디자인으로 인해 길어지는 개발시간을 단축하기 위해 만들었음</p>
+
+    <p>getbootstrap.com<br>getbootstrapk.kr (한글)</p>
+    <p>https://tailwindcss.com/ (참고용)</p>
+
+    <p>설치방법 : bootstrap CSS 파일은 head에 link태그를
+        이용해서 등록, bootstrap JS 파일은 body에 script태그를
+        이용해서 등록하면 됨</p>
+
+    <hr>
+    <a herf="#" class="btn btn-primary">구글로 이동</a>
+    <a herf="#" class="btn btn-danger">네이버로 이동</a>
+    <a herf="#" class="btn btn-dark">카카오로 이동</a>
+
+    <h2>12컬럼 그리드 시스템</h2>
+    <p>grid 시스템이란 화면을 일정크기의 격자grid로 나눈후
+        이것을 기준으로 웹 페이지를 구성하는 요소와 컨텐츠를
+        배치하는 것을 의미<br>
+        격자의 갯수는 보통 12개를 사용하는데,
+        이 방식을 이용하면 데스크탑/태블릿/모바일 환경에 따라
+        컨텐츠 재배치가 훨씬 쉬워짐</p>
+
+    <h2>컨테이너</h2>
+    <div class="container" style="border: 1px solid red">
+        <p>고정 너비, 가운데 정렬 컨테이너</p>
+    </div>
+    <div class="container-fluid" style="border: 1px solid blue">
+        <p>100% 너비 , 유동 컨테이너</p>
+    </div>
+
+    <h2>그리드 레이아웃</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-1 bg">1</div>
+            <div class="col-1 bg">2</div>
+            <div class="col-1 bg">3</div>
+            <div class="col-1 bg">4</div>
+            <div class="col-1 bg">5</div>
+            <div class="col-1 bg">6</div>
+            <div class="col-1 bg">7</div>
+            <div class="col-1 bg">8</div>
+            <div class="col-1 bg">9</div>
+            <div class="col-1 bg">10</div>
+            <div class="col-1 bg">11</div>
+            <div class="col-1 bg">12</div>
+            <div class="col-1 bg">13</div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-3 bg">1</div>
+            <div class="col-3 bg">2</div>
+            <div class="col-3 bg">3</div>
+            <div class="col-3 bg">4</div>
+        </div>
+    </div>
+
+
+    <h2>타이포그래피</h2>
+    <p>제목을 나타낼 때 p요소에 class="h?"형태로도 작성 가능</p>
+    <p class="h3">Hello,World!!</p>
+    <p class="h4">Hello,World!!</p>
+    <p class="h5">Hello,World!!</p>
+
+    <h2>부제목</h2>
+    <p>text-mute 라는 클래스를 이용해서 부제목 표현 가능</p>
+    <h3>Bootstrap5 <small class="text text-muted" >
+        World's most popular front-end
+        component Library</small></h3>
+
+    <h2>눈에 잘 띄는 문장</h2>
+    <p>read 클래스를 이용하면 눈에 잘 띄게 표현 가능</p>
+    <h3>Bootstrap5 <p class="read" >
+        World's most popular front-end
+        component Library</p></h3>
+
+    <h2>좀 더 큰 제목</h2>
+    <p>h? 보다 더 큰 제목을 나타내고 싶다면 class="display-" 사용</p>
+    <h1 class="display-1">Hello,World!!</h1>
+    <br>
+    <h2>인라인 텍스트 요소</h2>
+    <p>당신은 <mark>강조할 텍스트</mark>에 mark 태그를 사용할 수 있습니다.</p>
+    <p>이 텍스트줄은 <del>삭제된 텍스트</del>로 다뤄짐을 의미합니다.</p>
+    <p>이 텍스트줄은 <s>더 이상 정확하지 않다고</s> 다뤄짐을 의미합니다.</p>
+    <p>이 텍스트줄은 문서에 <ins>추가분으로</ins> 다뤄짐을 의미합니다.</p>
+    <p>이 텍스트줄은 <u>밑줄</u>이 그어질것입니다</p>
+    <p>이 텍스트는 <small>작게 보이도록</small> 되어 있습니다.</p>
+    <p><strong>두꺼운 텍스트로</strong> 렌더링 됩니다</p>
+    <p><em>이탤릭체로</em> 렌더링 됩니다</p>
+    <br>
+    <h2>텍스트정렬</h2>
+    <p>text-center, text-start, text-end 등으로
+        텍스트를 정렬할 수 있음</p>
+    <p class="text-center">Hello,World!!</p>
+    <p class="text-start">Hello,World!!(end)</p>
+    <p class="text-end">Hello,World!!(start)</p>
+
+    <h2>사용자 입력</h2>
+    <p>사용자가 키보드의 특정 키를 입력해야 함을
+        표현하려면 kbd태그를 사용함</p>
+
+    <p>텍스트를 복사하려면 단축키
+        <kbd>ctrl</kbd> + <kbd>c</kbd> 를 눌려야 합니다</p>
+
+    <h2>목록</h2>
+    <p>list-unstyled 클래스를 적용하면
+        목록에 나타나는 여백과 글머리 기호를 제거함</p>
+    <ul class="list-unstyled">
+        <li>라면</li>
+        <li>김밥</li>
+        <li>짜장면</li>
+    </ul>
+
+    <h2>블록 요소를 인라인 요소로 표현</h2>
+    <p>list-inline, list-inline-item  클래스로
+        블록요소를 인라인요소로 바꿀수 있음</p>
+    <ul class="list-inline">
+        <li class="list-inline-item">라면</li>
+        <li class="list-inline-item">김밥</li>
+        <li class="list-inline-item">짜장면</li>
+    </ul>
+
+    <h2>텍스트에 색상 표현하기</h2>
+    <p>text-primary, text-secondary,
+        text-success, text-danger, text-warning,
+        text-info, text-light, text-dark등의
+        클래스로 텍스트에 맥락있는 색상을 부여할 수 있음</p>
+    <p class="text-primary">bootstrap 색상 표현</p>
+    <p class="text-secondary">bootstrap 색상 표현</p>
+    <p class="text-success">bootstrap 색상 표현</p>
+    <p class="text-warning">bootstrap 색상 표현</p>
+    <p class="text-danger">bootstrap 색상 표현</p>
+    <p class="text-info">bootstrap 색상 표현</p>
+    <p class="text-light bg-dark">bootstrap 색상 표현</p>
+    <p class="text-dark">bootstrap 색상 표현</p>
+
+    <p>또한, bg-primary, bg-secondary,
+        bg-success, bg-danger, bg-warning,
+        bg-info, bg-light, bg-dark등의
+        클래스로 맥락있는 배경 색상을 부여할 수 있음</p>
+
+    <p class="bg-primary">bootstrap 색상 표현</p>
+    <p class="bg-secondary">bootstrap 색상 표현</p>
+    <p class="bg-success">bootstrap 색상 표현</p>
+    <p class="bg-warning">bootstrap 색상 표현</p>
+    <p class="bg-danger">bootstrap 색상 표현</p>
+    <p class="bg-info">bootstrap 색상 표현</p>
+    <p class="bg-light">bootstrap 색상 표현</p>
+    <p class="bg-dark text-light">bootstrap 색상 표현</p>
+
+    <h2>테이블</h2>
+    <table class="table">
+        <thead>
+        <tr><th>이름</th><th>국어</th>
+            <th>영어</th><th>수학</th></tr>
+        </thead>
+        <tbody>
+        <tr><td>수지</td><td>98</td>
+            <td>97</td><td>99</td></tr>
+        <tr><td>혜교</td><td>55</td>
+            <td>77</td><td>66</td></tr>
+        <tr><td>지현</td><td>78</td>
+            <td>32</td><td>45</td></tr>
+        </tbody>
+    </table>
+
+    <table class="table table-dark">
+        <thead>
+        <tr><th>이름</th><th>국어</th>
+            <th>영어</th><th>수학</th></tr>
+        </thead>
+        <tbody>
+        <tr><td>수지</td><td>98</td>
+            <td>97</td><td>99</td></tr>
+        <tr><td>혜교</td><td>55</td>
+            <td>77</td><td>66</td></tr>
+        <tr><td>지현</td><td>78</td>
+            <td>32</td><td>45</td></tr>
+        </tbody>
+    </table>
+
+    <table class="table table-striped">
+        <thead>
+        <tr><th>이름</th><th>국어</th>
+            <th>영어</th><th>수학</th></tr>
+        </thead>
+        <tbody>
+        <tr><td>수지</td><td>98</td>
+            <td>97</td><td>99</td></tr>
+        <tr><td>혜교</td><td>55</td>
+            <td>77</td><td>66</td></tr>
+        <tr><td>지현</td><td>78</td>
+            <td>32</td><td>45</td></tr>
+        </tbody>
+    </table>
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr><th>이름</th><th>국어</th>
+            <th>영어</th><th>수학</th></tr>
+        </thead>
+        <tbody>
+        <tr><td>수지</td><td>98</td>
+            <td>97</td><td>99</td></tr>
+        <tr><td>혜교</td><td>55</td>
+            <td>77</td><td>66</td></tr>
+        <tr><td>지현</td><td>78</td>
+            <td>32</td><td>45</td></tr>
+        </tbody>
+    </table>
+
+    <h2>테이블에 행/열에 색상 표현하기</h2>
+    <p>table-primary, table-secondary,
+        table-success, table-danger, table-warning,
+        table-info, table-light, table-dark <br> 등의
+        클래스로 맥락있는 색상을 부여할 수 있음</p>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr><th>이름</th><th>국어</th>
+            <th>영어</th><th>수학</th></tr>
+        </thead>
+        <tbody>
+        <tr class="table-success"><td>수지</td><td>98</td>
+            <td>97</td><td>99</td></tr>
+        <tr class="table-warning"><td>혜교</td><td>55</td>
+            <td>77</td><td>66</td></tr>
+        <tr class="table-danger"><td>지현</td><td>78</td>
+            <td>32</td><td>45</td></tr>
+        </tbody>
+    </table>
+
+    <h2>폼</h2>
+    <p>부트스트랩으로 폼을 디자인하려면
+        form-label, form-control, form-check-label,
+        form-check-input등을 사용하면 됨</p>
+
+    <form>
+        <div class="col-2">
+            <label for="uid" class="form-label">아이디</label>
+            <input type="text" id="uid" name="uid" class="form-control">
+        </div>
+        <div class="col-2">
+            <label for="pwd" class="form-label">비밀번호</label>
+            <input type="password" id="pwd" name="pwd" class="form-control">
+        </div>
+        <div>
+            <input type="checkbox" id="isLogin" class="form-check-input">
+            <label for="isLogin" class="form-check-label">로그인 기억하기</label>
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary">로그인</button>
+            <button type="button" class="btn btn-danger">아이디/비밀번호 찾기</button>
+        </div>
+    </form>
+
+    <h2>폼 요소를 한 줄로 나타내기</h2>
+    <p>한 줄로 나타내고 싶은 요소는 row 클래스로 지정하고,<br>
+        각 폼 요소의 너비는  col-? 클래스로 지정</p>
+    <form>
+        <div class="row" >
+            <label for="uid" class="form-label col-1">아이디</label>
+            <div class="col-2">
+                <input type="text" id="uid2" name="uid" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <label for="pwd" class="form-label col-1">비밀번호</label>
+            <div class="col-2">
+            <input type="password" id="pwd2" name="pwd" class="form-control">
+            </div>
+        </div>
+        <div>
+            <label ></label>
+            <input type="checkbox" id="isLogin2" class="form-check-input offset-1">
+            <label for="isLogin">로그인 기억하기</label>
+        </div>
+        <div class="row">
+            </div>
+            <button type="button" class="btn btn-dark">로그인</button>
+            <button type="button" class="btn btn-warning">아이디/비밀번호 찾기</button>
+        <div>
+        </div>
+    </form>
+
+
+    <p>부트스트랩으로 폼을 디자인하려면
+        form-label, form-control, form-check-label,
+        form-check-input등을 사용하면 됨</p>
+
+    <script src="/static/js/bs5/bootstrap.bundle.min.js"><script></script>
+
+</body>
+</html>

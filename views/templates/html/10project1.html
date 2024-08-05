@@ -10,13 +10,17 @@
         margin: 0 auto}
 
         /* header */
-        header { height: 100px; }
+        header { height: 100px; position: relative }
         header h1 {background: #cccccc; width: 150px;
             text-align: center; padding: 7px 0 ;
-            margin-left: 20px;float: left}
-
+            margin-left: 20px; float: left}
+        header div {position: absolute;
+            left: 170px;
+            bottom:20px;
+            margin-top: 0;
+            margin-left: 0; }
         header ul { list-style: none; padding: 0; float: right;
-                    margin-right: 10px}
+                    margin-right: 10px;}
         header ul li { display: inline-block; padding: 0 1px;}
         header ul li:after { content: ' |' }
         header ul li:last-child:after { content: " "}
@@ -35,16 +39,14 @@
         .navgroup {display: table-cell; vertical-align: middle; height: 35px}
 
         /*메인 카테고리 / 베너*/
-        main{ border: 1px solid violet }
-
         #line{height: 10px}
         .content { display: flex; align-items: flex-start; margin: 25px auto }
         #cate {display: inline-block ; float: left}
-        #cate li {list-style: none ; border:1px solid black; padding: 10px 70px;  margin-left: 180px;
+        #cate li {list-style: none ; border:1px solid black; padding: 4px 50px;
         border-collapse: collapse; min-width: 120px}
         #banner {position: relative; margin-left: 20px ;}
-        #banner p {display: inline-block; border: 2px solid black; padding: 110px 300px;
-            min-width: 500px;min-height: 75px;margin-left:20px }
+        #banner p {display: inline-block; border: 2px solid black; padding: 70px 200px;
+            min-width: 150px;min-height: 75px;margin-left:20px }
         #li4 {display: inline-block;
             padding: 0;
             margin: 0;
@@ -52,15 +54,13 @@
             bottom: 30px;
             right: 10px; }
         #li4> li { width: 30px;height: 30px; padding-top: 5px;display: inline-block;margin-right: 10px;
-                text-align: center ;background: lightblue;}
+                text-align: center ;background: mediumseagreen;}
 
         /*프로덕트*/
-        footer { border: 1px solid blue }
-
-        #products{ margin-left: 220px }
-        #prd {list-style: none; padding: 0; margin-left: 300px; }
+        #products{ margin-left:50px }
+        #prd {list-style: none; padding: 0; margin-left: 50px }
         #prd li{text-align: center; margin-right: 85px ; display: inline-block;}
-        #prd li img{ display:block;margin: 0 auto;  }
+        #prd li img{ display:block;margin: 0 auto; background: #cccccc; border-radius: 7px }
 
         /*foot*/
         footer ul {float:left; list-style: none; margin-bottom: 100px}
