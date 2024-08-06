@@ -20,3 +20,8 @@ async def hello(req: Request):
 @jscript_router.get('/type')
 async def type(req: Request):
     return templates.TemplateResponse('js/02type.html', {'request': req})
+
+
+@jscript_router.get('/operator')
+async def operator(req: Request):
+    return templates.TemplateResponse('js/03operator.html', {'request': req})
