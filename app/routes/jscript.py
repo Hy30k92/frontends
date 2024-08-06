@@ -25,3 +25,7 @@ async def type(req: Request):
 @jscript_router.get('/operator')
 async def operator(req: Request):
     return templates.TemplateResponse('js/03operator.html', {'request': req})
+
+@jscript_router.get('/condition')
+async def condition(req: Request):
+    return templates.TemplateResponse('js/04condition.html', {'request': req})
