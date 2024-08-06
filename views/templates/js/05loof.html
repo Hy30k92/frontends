@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>반복문</title>
+</head>
+<body>
+    <h1>반복문</h1>
+    <h2>개요</h2>
+    <p>조건을 만족하는 동안 코드를 반복적으로 수행하는 문장</p>
+    <p>자바스크립트에서는 기본적으로
+        3가지 반복문(for, while, do-while)이 지원되고,
+        그외 for-loop, for-in과 ES6에서 추가된 for-of등이 있음</p>
+
+    <h2>for</h2>
+    <p>조건식이 참 일 동안 코드블록을 반복적으로 실행</p>
+    <p>for(초기식; 판별식; 증감식) {</p>
+    <p>    반복구문</p>
+    <p>}</p>
+
+    <script>
+        //1~10 까지 출력
+        document.write('1 ');
+        document.write('2 ');
+        document.write('3 ');
+        document.write('4 ');
+        document.write('5 ');
+        document.write('6 ');
+        document.write('7 ');
+        document.write('8 ');
+        document.write('9 ');
+        document.write('10 ');
+    </script>
+    <br>
+    <script>
+        // 1 ~ 10 까지 출력 : for
+        for (let i = 1; i <= 10; ++i ){
+            document.write(`${i} `,);
+        }
+        document.write('<br>')
+        // 1 ~ 100 사이 짝수 출력
+        for (let i = 1  ; i <=100; ++i ){
+            if(i % 2 === 0)
+            document.write(`${i} `);
+        }
+
+        // 10 ~ 1 까지 의 정수 출력
+        for (let i = 10; i >=1; --i){
+            document.write(`${i} `);
+        }
+    document.write('<br>')
+        // 구구단 출력 - 7단
+       document.write(`7 x 1 = 7`,'<br>');
+       document.write(`7 x 2 = 14`,'<br>');
+       document.write(`7 x 3 = 21`,'<br>');
+       document.write(`7 x 9 = 63`,'<br>');
+       document.write('<hr>');
+       for(let i = 1 ; i <= 9; ++i){
+           document.write(`7 x ${i} = ${7 * i}`, '<br>')
+       }
+    </script>
+
+    <h2>무한 반복문 - for</h2>
+    <p>for문의 경우 초기식,판별식,증감식을 비워두면
+        반복을 끊임없이 실행하는 무한반복문이 됨</p>
+    <script>
+        // for ( ; ; ){
+        //     document.write('Hellok World!!', '<br>')
+        // }
+    </script>
+
+    <h2>중첩 반복문 - for</h2>
+    <p>2개 이상의 for문을 겹쳐 사용하는 반복문</p>
+    <p>복잡한 작업을 반복 실행할때 유용하게 사용</p>
+
+    <script>
+        // 10층 별 삼각형 출력
+        for (let i = 1 ; i <=10; ++i) { //층 반복문
+            for(let j = 1; j <= i; ++j){ //별 반복문
+                document.write('*');
+            }
+        document.write('<br>')
+        }
+    </script>
+
+    <script>
+        //구구단 출력
+    </script>
+
+    <h2>break</h2>
+    <p>원하는 시점에 반복문이나 코드블록에서
+        벗어나기 위해 사용</p>
+    <script>
+        // 1~ 1000 까지의 총 합을 계산
+        // 단, 총합이 10000을 넘어가면 계산을 중단함
+        sum = 0;
+        for (let i = 1 ; i<=1000; i++){
+            if (sum > 10000)break;
+            sum += i;
+            cnt = i;
+        }
+        document.write(`${sum}, ${cnt}`,'<br>');
+    </script>
+
+
+    </body>
+</html>
