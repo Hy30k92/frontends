@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>배열</title>
+</head>
+<body>
+    <h1>배열</h1>
+    <h2>개요</h2>
+    <p>동일한 자료형의 자료를
+        여러개 저장하기 위한 자료구조</p>
+    <p>배열 생성시 [] 또는 Array()를 이용함</p>
+    <p>데이터의 입력순서를 기억함 : 순차 자료구조</p>
+    <p>요소 : 배열 안에 저장된 개별 데이터</p>
+    <p>인덱스 : 요소가 위치한 순서를 나타내는 숫자</p>
+    <p>인덱스는 0부터 시작함</p>
+
+    <p>자료구조 : 데이터를 구조적으로 표현하는 방식과
+        이를 구현하는데 필요한 알고리즘을 논하는 이론</p>
+    <p>즉, 데이터를 효율적으로 다룰수 있게 도와주는
+        데이터 보관방법과 데이터에 관한 연산의 집합체임</p>
+
+    <script>
+        // 점심메뉴 5개 저장하기 v1
+        let menu1 = '라면';
+        let menu2 = '짜장면';
+        let menu3 = '탕수육';
+        let menu4 = '뚝배기불고기';
+        let menu5 = '민트초코';
+
+        document.write(
+            menu1, menu2, menu3, menu4, menu5, '<br>');
+
+        // 점심메뉴 5개 저장하기 v2
+        let menus = ['라면','짜장면','탕수육','뚝배기불고기','민트초코']
+        document.write(menus[0],menus[1],menus[2],menus[3],menus[4], '<br>');
+
+        for (let i = 0; i < 5; ++i){
+            document.write(menus[i] );
+        }
+        document.write('<br>')
+        // 점심메뉴 5개 저장하기 v2b
+        // 빈 배열 생성후 요소 추가 : push
+        menus = [];
+        menus.push('라면');
+        menus.push('짜장면');
+        menus.push('탕수육');
+        menus.push('뚝배기불고기');
+        menus.push('민트초코');
+
+        for (let menu of menus){
+            document.write(menu, ' ')
+        }
+        document.write('<br>')
+        //배열의 갯수, 크기 , length
+        document.write('메뉴 수 : ', menus.length, '<br>')
+
+        // 점심메뉴 5개 저장하기 v3
+        menus = new Array(10); // 크기가 10인 빈 배열
+
+        menus[0]='라면';
+        menus[1]='짜장면';
+        menus[2]='탕수육';
+        menus[3]='뚝배기불고기';
+        menus[4]='민트초코';
+        for (let menu of menus){
+            document.write(menu, ' ')
+        }
+        document.write('<br>')
+
+        // 점심메뉴 5개 저장하기 v3b
+        menus = new Array([]);  // => []
+
+        menus.push('라면');
+        menus.push('짜장면');
+        menus.push('탕수육');
+        menus.push('뚝배기불고기');
+        menus.push('민트초코');
+    </script>
+
+    <h2>forEach 콜백</h2>
+    <p>배열에 저장된 각 요소에 대해 제공된 콜백함수를 한번씩
+        실행하는 배열 메서드</p>
+    <p>배열의 요소를 순회하면서 특정 작업을 수행할 때 유용</p>
+    <p>콜백 callback : 특정 이벤트나 시점에 도달했을 때 호출되는 함수.<br>
+        비동기 프로그래밍의 중요한 요소 중에 하나이고, 자바스크립트의 핵심<br>
+        Don't call me, we'll call you ( 헐리우드 원칙)</p>
+
+    <script>
+        //메뉴 출력
+        // for (let menu of menus){
+        //     document.write(menu, ' ')
+        // }
+        menus.forEach(menu => console.log(menu));
+        menus.forEach(menu => document.write(menu, ' '));
+
+    </script>
+
+    <h2>실습하기</h2>
+    <script>
+        // ex) 성적 처리프로그램 v3
+        // 3명의 학생에 대해
+        // 이름, 국어, 영어, 수학을 입력받아
+        // 총점, 평균, 학점을 계산한 뒤 결과 출력
+        // 단, 학점은 수우미양가 중 하나가 출력되어야 함
+        let names = [];
+        let kors = [];
+        let engs = [];
+        let mats = [];
+        let tots = [];
+        let avgs = [];
+        let grds = [];
+
+        for (let i = 1; i <=3; ++i){
+            names.push(prompt(`${i}번의학생 이름은?`));
+            kors.push(Number(prompt(`${i}번의학생 국어는?`)));
+            engs.push(Number(prompt(`${i}번의학생 영어는?`)));
+            mats.push(Number(prompt(`${i}번의학생 수학은?`)));
+        }
+
+        for (let i = 0; i< names.length; ++i){
+            tots.push(kors[i] + engs[i] + mats[i]);
+            avgs.push(tots[i] / 3);
+            switch (parseInt(avgs[i] / 10)){
+                case 10: case 9 : grds.push('수'); break;
+                case 8 :grds.push('우'); break;
+                case 7 :grds.push('미'); break;
+                case 6 :grds.push('양'); break;
+                default :grds.push('가'); break;
+
+            }
+        }
+
+        let result = ' '
+        for (let i =0; i < names.length; ++i){
+            result += `${names[i]} ${kors[i]}  ${engs[i]}  ${mats[i]}  <br>`;
+            result += `${tots[i]} ${avgs[i]}  ${grds[i]} <hr>`;
+        }
+
+        document.write(result, '<br>')
+
+    </script>
+
+
+
+</body>
+</html>

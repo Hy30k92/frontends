@@ -33,3 +33,7 @@ async def condition(req: Request):
 @jscript_router.get('/loof')
 async def loof(req: Request):
     return templates.TemplateResponse('js/05loof.html', {'request': req})
+
+@jscript_router.get('/array')
+async def array(req: Request):
+    return templates.TemplateResponse('js/06array.html', {'request': req})
