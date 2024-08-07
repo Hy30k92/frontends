@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>함수</title>
+</head>
+<body>
+    <h1>함수</h1>
+    <h2>개요</h2>
+    <p>특정 작업(코드블록)을 여러번 반복해야 하는 경우
+        해당 작업을 재사용 가능한 구조로 만들때 사용</p>
+    <p>즉, 어떤 작업을 수행하기 위해
+        필요한 코드들의 집합을 의미하고,
+        이것들을 재사용하기 위해 모듈형태로 작성한 것</p>
+
+    <p>function 함수명(매개변수들,...) {</p>
+    <p>   코드들  </p>
+    <p>}</p>
+
+    <script>
+        // 인삿말
+        // 함수 정의
+        function sayHello(){
+            document.write('Hello,World!!','<br>')
+        }
+        // 함수 실행 - 호출
+        sayHello();
+
+        // 함수 정의 2
+        // 함수 정의
+        function sayHello2(msg){
+            document.write(`Hello,${msg}!!`,'<br>')
+        }
+        // 함수 실행 - 호출 : 함수명 (인자)
+        sayHello2('Java');
+        sayHello2('Python');
+
+        // 함수 정의 3 = return
+        // 함수는 작업한 결과를 호출자에게 넘기는 역할만 담당
+        function sayHello3(msg) {
+            return `Hello,${msg}!`;
+        }
+
+        //함수 실행 - 호출
+        document.write('😀', sayHello3('Node.js'), '<br>')
+        document.write('🙇‍♀️',sayHello3('React'), '<br>')
+    </script>
+    <h2>익명함수</h2>
+    <p>자바스크립트의 함수는 1급시민이므로
+        값으로 취급할 수 있음</p>
+    <p>따라서, 함수를 익명으로 정의한 후
+        변수에 대입하는 식으로 함수를 선언할 수도 있음</p>
+
+    <script>
+        // 함수 정의 4 - 익명 함수
+        // 변수명 = function
+        let sayHello4 = function(msg) {
+            return `Hello,${msg}!`;
+                }
+                //함수 실행 - 호출: 변수명이 곧 함수명
+                document.write(sayHello4(`1급시민`));
+    </script>
+    <h2>화살표 함수</h2>
+    <p>ES6에서 추가된 기능으로 함수 선언을 간단하게 작성 가능</p>
+    <p>즉, function이라는 키워드 대신 => 를 이용해서
+        함수를 선언할 수 있음</p>
+    <script>
+        // 함수 정의 5 - 화살표 함수
+        // 변수명() => {}
+        let sayHello5 = (msg) => {
+            return `Hello,${msg}!`;
+        }
+        //함수 실행 =호출
+        document.write(sayHello5('화살표 함수'),'<br>');
+
+        // 함수 정의 6 : 중괄호 생략
+        // 함수의 코드가 한줄일 때만 가능
+        let sayHello6 = (msg) => `Hello, ${msg}!!`;
+        //함수 실행 =호출
+        document.write(sayHello6('괄호 필요없는 함수'),'<br>')
+
+        //  함수정의 7 - 화살표함수 : 중괄호, return 생략
+        // 함수의 코드가 단 한줄일 떄 사용 가능
+        let sayHello7 = (msg) => `Hello, ${msg}!!`;
+
+        //함수호출
+        document.write(sayHello7('괄호, return 없는 화살표 함수'),'<br>')
+
+    </script>
+    <script>
+    // 시분초를 입력받아
+    // 오전, 오후 구분하여 출력 : showAMPM
+    // 선언형
+    function showAMPM(time){
+        let result = '오후입니다';
+        let hour = time[0] + time[1];
+        if (hour < 12) result = '오전입니다';
+
+        return `${hour} 시는 ${result}<br>`;
+    }
+    document.write(showAMPM('16:13:35'));
+    // 화살표형
+    let showAMPM2 = (time) => {
+        let result = '오후입니다';
+        let hour = time[0] + time[1];
+        if (hour < 12) result = '오전입니다';
+
+        return `${hour} 시는 ${result}<br>`;}
+
+    document.write(showAMPM('06:13:35'));
+
+    // 굼액을 입력받아 부가세를 출력 : ccomputeVAT
+    // 선언형
+    function computeVAT(price){
+        return price * 0.1;
+    }
+    let price = 10000
+    let vat = computeVAT(price);
+    document.write( `${price}원의 부가세는 ${vat} 입니다`,'<br>');
+    // 화살표형
+    let computeVAP2 = (price) => price * 0.1;
+    price = 25000
+    vat = computeVAT(price);
+    document.write( `${price}원의 부가세는 ${vat} 입니다`,'<br>');
+    </script>
+
+    <h2>변수의 스코프 : 유효범위</h2>
+    <p>변수나 함수가 코드의 어느 범위까지 접근/생존 가능한지를 의미</p>
+    <p>전역 스코프 : 코드 어디서나 접근 가능한 변수/함수</p>
+    <p>함수 스코프 : 함수 내 선언 - 해당 함수내에서만 접근가능</p>
+    <p>블록 스코프 : {}에서 선언 - {} 내에서만 접근 가능</p>
+
+    <h2>호이스팅</h2>
+    <p>변수와 함수 선언이 스코프의 최상단으로 끌어 올려지는 동작을 의미</p>
+    <p>단, 변수 선언만 호이스팅 되고, 초기화는 안됨</p>
+    <p>호이스팅을 허용하면 변칙적인 프로그래밍(변수/함수 선언 자유로움)이 가능해져서
+        결과예측이 어려워질수 있으니, 이러한 방식의 코딩은 비추!</p>
+    <script>
+        //let 으로 변수 선언/초기화 시 호이스팅 금지!
+        // console.log(b);
+        // let b = 10;
+        // console.log(b);
+
+        // let 으로 함수 선언시 호이스팅 금지!
+        console.log(myFunc());
+        let myFunc = () => 'Hello,~' ;
+
+    </script>
+
+
+</body>
+</html>
