@@ -37,3 +37,7 @@ async def loof(req: Request):
 @jscript_router.get('/array')
 async def array(req: Request):
     return templates.TemplateResponse('js/06array.html', {'request': req})
+
+@jscript_router.get('/while')
+async def while2(req: Request):
+    return templates.TemplateResponse('js/07while.html', {'request': req})

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>반복문 while</title>
+</head>
+<body>
+    <h1>반복문 - while</h1>
+    <h2>개요</h2>
+    <p>조건식이 참일 동안 코드블록을 실행하는 반복문</p>
+    <p>만일, 조건식이 처음부터 거짓이면
+        코드블록은 한번도 실행되지 않을 수 있음</p>
+    <p>for는 반복 횟수을 처음부터 알고 있을때 실행하는 반복문인 반면,
+        while은 반복 횟수을 모르고 실행하는 반복문임</p>
+    <p>하지만, for문을 while문으로 또는 그 반대로의 변환이 가능</p>
+
+    <h2>while 구조</h2>
+    <p>초기식</p>
+    <p>while(조건식) {</p>
+    <p>   실행할 코드들</p>
+    <p>   증감식</p>
+    <p>}</p>
+
+    <script>
+        // 1 ~ 10 까지의 정수 출력
+        let i = 1;
+        while( i <= 10){
+            document.write(i,' ');
+            ++i;
+        }
+    document.write('<br>')
+
+
+        // 1 ~ 100 까지의 정수 합 출력
+        i = 1;
+        let sum = 0
+        while(i <= 100){
+            sum += i ;
+            ++ i;
+        }
+        document.write(sum, '<br>')
+
+        // 구구단 출력 : 7 단
+        let dan = 7;
+        i = 1;
+        while( i <=9 ){
+            document.write(`${dan} x ${i} = ${dan * i} `, '<br>')
+            ++i
+        }
+    </script>
+
+    <h2>continue</h2>
+    <p>반복문의 코드실행을 현 지점에서 중단하고
+        반복문의 증감식이나 조건식으로 제어를 이동시킴</p>
+    <p>즉, 반복을 일시적으로 건너뛰어 다음 반복으로 넘어감</p>
+
+
+    <script>
+        // 1~1000까지의 총합을 계산
+        // 단, 5의 배수나 7의 배수는 계산에서 제외함
+        sum = 0;
+        i = 1;
+        while(i <= 1000){
+            ++i
+            if ( i % 5 ===0 || i % 7 ===0){
+                continue;
+            } else {
+                sum += i;
+            }
+        }
+    document.write(sum, '<br>');
+
+    </script>
+    <h2>무한 반복문 - while</h2>
+    <p>반복문의 조건식을 true라고 설정하면
+        해당 반복문을 무한 실행함</p>
+    <script>
+        // 임의의 정수를 계속 입력하면
+        // 입력한 정수의 합을 계산함
+        // 단, 0을 입력하면 실행을 중지하고
+        // 지금까지의 총합을 출력
+        // 옵션 : 입력한 모든 정수도 같이 화면에 출력( 배열 )
+        // sum = 0
+        // let num = -1;
+        // let msg = `숫자를 입력하세요 (종료 = 0) `
+        // while(true) {
+        //     num = Number(prompt(msg));
+        //     if ( num === 0 ) break;
+        //     sum += num;
+        //     }
+        // document.write(sum, '<br>')
+
+        sum = 0
+        let nums = [];
+        let msg = `숫자를 입력하세요 (종료 = 0) `
+        while(true) {
+            num = Number(prompt(msg));
+            if ( num === 0 ) break;
+            nums.push(num);
+            sum += num;
+        }
+        document.write(`${[nums]} ${sum}`, '<br>')
+    </script>
+
+
+</body>
+</html>
