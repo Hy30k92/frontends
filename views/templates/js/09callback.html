@@ -39,12 +39,133 @@
     <p>Timeout(함수명, 시간) : 지정한 시간이 흐른 후 함수 실행 (1번)</p>
     <p>setInterval(함수명, 시간) : 지정한 시간이 흐른 후 함수 실행 (계속)</p>
     <p>함수 지정시 ()는 생략, 시간은 1/1000초 단위</p>
+    <p>Timeout, Interval을 중지하고 싶다면, claer~ 라는 함수 호출</p>
 
     <script>
-        let showDateTime = () => {let today = new Date(); // 현재 날짜와 시간 가져오기
-      setInterval(showDateTime, 3000)
+        let showDateTime = () => {
+            let today = new Date();
+            let datetime = today.toLocaleString();
+            document.write(datetime,'<br>')
+        }; // 현재 날짜와 시간 가져오기
+      // setInterval(showDateTime, 3000)
     </script>
 
 
+    <h2>Number 객체</h2>
+    <p>toFixed(소수부 자릿수)</p>
+
+    <script>
+        let avg = 98.77777776;
+        document.write(avg.toFixed(1), '<br>')
+    </script>
+
+    <h2>String</h2>
+    <p>문자열을 효율적으로 다룰수 있게 해 줌</p>
+    <p>String 객체는 기본적으로 불변immutable 객체(변경불가)임</p>
+    <p>문자열은 기본적으로 문자열 상수풀pool을 이용해서 관리함</p>
+
+    <script>
+        let str1 = 'Hello,World!!';
+        let str2 = 'Hello,World!!';
+        let str3 = new String('Hello,World!!');
+
+        //값 비교
+        document.write(`str1 == str2 = ${str1 == str2}`, '<br>');
+        document.write(`str1 == str3 = ${str1 == str3}`, '<br>');
+
+        // 값/ 자료형 비교
+        document.write(`str1 == str2 = ${str1 === str2}`, '<br>');
+        document.write(`str1 == str3 = ${str1 === str3}`, '<br>');
+        // 문자열 상수풀 때문에 str1 == str2
+
+        str1[0] = 'h'; // 소문자로 바뀌지 않음
+        document.write(str1[0], '<br>');
+        // 문자열은 불변 객체이므로 변경불가!
+
+        // slice(시작, 끝+1) : 지정한 범위 내 문자 추출
+        document.write(str1.slice(0,5), '<br>');
+
+        // indexOf(찾는문자열) : 특장 문자열의 존재여부
+        document.write(str1.indexOf('World'),'<br>')
+        document.write(str1.indexOf('sayHello'),'<br>')
+
+        // lastIndexOf(찾는 문자열)
+        str4 = 'Hello, Hello, Hello, World!!';
+        document.write(str4.indexOf('Hello'),'<br>');
+        document.write(str4.lastIndexOf('Hello'),'<br>');
+
+        // replace(찾을문자열, 바꿀문자열)
+        // Hello 를 Hi 로 바꿈
+        document.write(str3.replace('Hello','Hi'),'<br>');
+        document.write(str4.replace('Hello','Hi'),'<br>');
+        //만일, 찾을 문자열이 하나 이상 존재할 경우,
+        // 정규표현식 형태로 작성하고 적용범위를 지정해야 함
+        document.write(str4.replace(/Hello/g,'Hi'),'<br>');
+
+        // split(구분문자) : 문자열을 구분문자로 나눠 배열에저장
+        today = '2024-08-08 10:40:15';
+        document.write(today.split(' '), '<br>');
+        document.write(today.split(' ')[0], '<br>');
+        document.write(today.split(' ')[1], '<br>');
+
+        // padStart(전체자릿수, 채울문자), padEnd
+        let month = '8';
+        document.write(month.padStart(2, 0), '<br>');
+    </script>
+
+    <h2>Math</h2>
+    <script>
+        let num = 3.14152;
+        document.write(Math.round(num), '<br>') // 반올림
+        document.write(Math.ceil(num), '<br>') // 올림
+        document.write(Math.floor(num), '<br>') //내림
+
+        // random : 0~1사이 임의의 실수값 출력
+        // 특정 범위 임의의 정수 생성 공식
+        // floor(random * (max - min + 1)) + min
+
+        let rndnum = Math.random() * 10; // 0~9 사이
+        document.write(rndnum, '<br>')
+
+        // ex) 위 공식을 이용해서 randInt라는 함수를 만들고,
+        // 1~45 사이 임의의 정수 6개를 출력
+        let randInt = (i) => {
+            i++
+            for (let i = 0 ; i < 6; ++i){
+            let rndnum2 = Math.random() * (45 - 1 + 1 )+ 1;
+            document.write(Math.round(rndnum2), '<br>')
+        }}
+        randInt()
+        document.write('<hr>')
+        //선생님풀이
+        randInt2 = (mn,mx) => {
+            return Math.floor(
+                    Math.random() * (mx - mn + 1)) + mn
+        };
+        let lotto = [];
+        for (let j = 1; j <= 6; ++j){
+        //document.write(randInt2(1, 45), '<br>');
+        lotto.push( randInt2(1, 45));
+        }
+        document.write(lotto.sort() , '<br>')
+    </script>
+    <script>
+    // ex) 파일명이 abc.123.png 일때
+    // 파일이름과 확장자로 분리하세요
+    // abc.123.png => abc.123 / png
+    let fullname = 'abc.123.png';
+    // let fname = fullname.split('.')[0] + '. '+
+    //            fullname.split('.')[1]
+    // let fext = fullname.split('.')[2]
+    let fname = fullname.slice(0, fullname.lastIndexOf('.'));
+    let fext = fullname.slice(fullname.lastIndexOf('.')+1);
+    // let fext = fullname.slice(7.11);
+
+
+    document.write(`${fullname}의 파일이름 : ${fname}`,'<br>')
+    document.write(`${fullname}의 확장자 : ${fext}`,'<br>')
+
+
+    </script>
 </body>
 </html>
