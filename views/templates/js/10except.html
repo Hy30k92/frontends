@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>예외처리</title>
+</head>
+<body>
+    <h1>예외처리</h1>
+    <h2>개요</h2>
+    <p>프로그램의 실행을 중단시키는 요인을 에러 또는 예외라고 함</p>
+    <p>에러error : 개발자가 조치할 수 없는 시스템 상의 오류
+        ex) 네트워크 오류, 전원 차단으로 인한 오류</p>
+    <p>예외except : 개발자가 조치할 수 있는 시스템 상의 오류
+        ex) 문법오류, 논리오류, 실행 오류</p>
+
+    <p>자바 스크립트의 예외는 try - catch 문을 통해 관리 가능</p>
+
+    <p> try {   </p>
+    <p>   예외가 발생할만한 코드들  </p>
+    <p> } catch(객체) { </p>
+    <p>   예외처리코드 </p>
+    <p> } </p>
+
+    <script>
+        document.write('-- 프로그램 시작 --', '<br>');
+        document.write(`100 / 10 = ${100/10}` , '<br>');
+        document.write('- 프로그램 끝 --', '<hr>');
+    </script>
+
+    <script>
+        document.write('-- 프로그램 시작 --', '<br>');
+        // document.write(`100 / ? = ${100/num}` , '<br>');
+        document.write('- 프로그램 끝 --', '<hr>');
+    </script>
+
+    <script>
+        //예외처리
+        document.write('-- 프로그램 시작 --', '<br>');
+        try {
+            document.write(`100 / ? = ${100 / num}`, '<br>');
+        } catch (e){
+            document.write('예외 발생!! - num 변수 선언 필요!','<br>')
+            document.write(e.name,'<br>') // 오류종류
+            document.write(e.message,'<br>') // 오류 메세지
+            document.write(e.stack,'<br>') //오류 추적사항
+        }
+        document.write('- 프로그램 끝 --', '<br>');
+    </script>
+    <h2>유형별 예외처리</h2>
+    <p>오류 유형별로 메세지 처리를 상이하게 하고 싶으면
+        instanceof 연산자를 사용하면 됨</p>
+    <p>referenceError : 변수선언과 관련된 오류</p>
+    <p>rangeError : 범위와 관련된 오류</p>
+    <p>syntaxError : 문법과 관련된 오류</p>
+    <p>typeError : 변수나 객체의 자료형과 관련된 오류</p>
+
+    <script>
+        try{
+            document.write(sayhello);
+        }catch (e){
+            if (e instanceof ReferenceError){
+                document.write('오류 : 변수가 정의되지 않음')
+            }
+        }
+
+    </script>
+
+</body>
+</html>
