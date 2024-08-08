@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>BOM -  브라우저 객체</title>
+</head>
+<body>
+    <h1>브라우저 객체</h1>
+    <h2>개요</h2>
+    <p>웹브라우져의 여러 구성요소들을 객체형태로 구현해서
+        자바스크립트로 제어할 수 있도록 만들어 놓은 것</p>
+    <p>BOM은 W3C의 표준모델은 아님</p>
+    <p>따라서, 브라우저 제조사마다 구현방식이 달라
+        특정부분은 서로 호환되지 않는 것도 존재</p>
+
+    <h2>window객체</h2>
+    <p>웹브라우저의 창을 의미하는 객체</p>
+    <p>innerHeight, innerWidth :
+        브라우져의 뷰포트 크기를 의미하는 속성</p>
+    <script>
+        let iw = window.innerWidth ||
+        document.documentElement.clientWidth;
+        let ih = window.innerHeight ||
+        document.documentElement.clientHeight;
+        document.write(`뷰포트 크기 ${iw} / ${ih}`,'<br>')
+    </script>
+
+    <script>
+        // window 객체의 대화상자
+        // confirm : 예, 아니오 중 하나를 선택하는 창 표시
+        // alert : 간단한 경고창 출력
+        // prompt : 사용자로부터 값을 입력받는 창 표시
+
+        // let yesno = window.confirm(
+        //         '자바 스크립트를 좋아하시나요?');
+        // if (yesno) document.write('정말요?', '<br>');
+        // else alert('그렇군요!');
+    </script>
+    <h2>문서 열기/닫기</h2>
+    <p>window객체의 open함수를 이용해서 지정한 문서를
+        새창이나 새로운 탭에 띄울수 있음</p>
+    <p>또한, window객체의 close함수를 이용하면
+        띄워진 창이나 탭을 닫을 수 있음</p>
+    <p>창 생성시 창에 관한 속성(크기,너비등)을 설정하면
+        탭으로 생성되지 않고 독립적인 창으로 생성됨</p>
+    <p>주 브라우저의 url과 새 창의 url이 동일하지 않을 경우
+        CSRF 와 CORS 보안 위배 발생 가능성이 존재!
+        (동일 출처 위반)</p>
+
+        <div>
+            <button type="button" onClick="makeWin()">새창띄우기</button>
+            <button type="button" onClick="rmvWin()">띄운 창 닫기</button>
+        </div>
+        <script>
+            let makeWin = () =>{
+                //window.open(문서열URL)
+                // mmy win = window.open('/js/hello')
+                mywin.open('http://naver.com')
+            };
+            let rmvWin = () => {mywin.close();
+            };
+;
+        </script>
+    ---
+    <h2>창 조작</h2>
+    <p>resizeTo : 생성한 창의 크기 변경</p>
+    <p>moveTo : 생성한 창의 위치 변경</p>
+
+    <div>
+        <button type="button" onclick="makeWin2()">새창띄우기</button>
+        <button type="button" onclick="movWin()">창 이동시키기</button>
+        <button type="button" onclick="rszWin()">창 크기바꾸기</button>
+        <button type="button" onclick="rmvWin()">창 닫기</button>
+    </div>
+    <script>
+        //windowlopen(문서명,Null,이름,너미,높이
+        let makeWin2 = () => {
+            mywin = window.open('about:blank',
+                null,'popup,width = 300,height=300');
+        }
+        let movWin = () => {
+            //movoto(x좌표 , y좌표
+            mywin.moveTo(550,550);
+        }
+        let rszWin  = () => {
+            // resizeTo (너비, 높이
+            mywin.resizeTo(500, 200);
+        }
+
+    </script>
+    <h2>랜덤 창 띄우기</h2>
+
+    <div>
+        <button type="button" onclick="startRndwin()">랜덤창 시작!</button>
+
+        <button type="button" onclick="stoprndwin()">랜덤창 중지!</button>
+    </div>
+
+    <script>
+        let myintval = null; //인터벌 저장용 변수
+
+        // 임의로 창의 위치를 바꿈
+        let moveWin = () => {
+            let x = Math.floor(Math.random() * 1920);
+            let y = Math.floor(Math.random() * 1980);
+            mywin.moveTo(x, y);
+        };
+        //임의로 창의 크기를 바꿈
+        let resizeWin = () => {
+            let w = Math.floor(Math.random() * 350);
+            let h = Math.floor(Math.random() * 350);
+            mywin.resizeTo(w, h);
+        };
+        // 새창을 하나 만들어 임의의 위치에 띄운 후,
+        // 주기적(0.2초) 으로 위치와 크기를 변경함
+        let startRndwin = () => {
+            makeWin2();
+            intval = setInterval(
+                () => {moveWin(); resizeWin()}, 300);
+                }
+
+        let stoprndwin = () => {
+            clearInterval(intval);
+            mywin.close();
+        }
+    </script>
+    <h2>screen</h2>
+    <p>사용자 디스플레이에 관한 정보를 다루는 객체</p>
+
+    <p>width, height : 사용자 디스플레이의 실제 해상도 크기</p>
+    <p>availWidth, availHeight : 사용자 디스플레이의 실제 해상도 중
+        사용자가 사용가능한 화면영역</p>
+
+    <script>
+        document.write(screen.width, '/', screen.height, '<br>');
+        document.write(screen.availWidth, '/', screen.availHeight, '<br>');
+    </script>
+    <h2>화면 정중앙에 새창 띄우기</h2>
+
+    <div>
+        <button type="button" onclick="centerWin()">
+            정중앙에 새창띄우기</button>
+    </div>
+    <script>
+        // 창크기 : 300 x 300 (makewin2)
+        // //내풀이
+        // let centerWin = () => {makeWin2()
+        //      mywin.resizeTo(300, 300)
+        //      mywin.moveTo(900, 360)
+        // };
+        let centerWin = () => {
+            let sx = screen.width;
+            let sy = screen.height;
+
+            let cx = (sx / 2) - (300 / 2);
+            let cy = (sy / 2) - (300 / 2);
+            makeWin2();
+            mywin.moveTo(cx, cy);
+        }
+    </script>
+
+    <h2>location</h2>
+    <p>현재브라우져에 표시된 문서의 url을 변경하거나
+        url에 대한 정보를 얻을 수 있음</p>
+    <script>
+        let url = location.href;
+
+        document.write(url, '<br>');
+        document.write(location.hostname, '<br>');
+        document.write(location.pathname, '<br>');
+        document.write(location.search, '<br>');
+    </script>
+
+    <div>
+        <button type="button" onclick="go2gle()">
+            구글로 이동</button>
+        <button type="button" onclick="go2any()">
+            오늘의 추천사이트</button>
+    </div>
+
+    <script>
+        let go2gle = () => {
+            location.href = 'http://google.co.kr';
+        }
+        let go2any = () => {
+            const luckys = ['naver.com','google.com','kakao.co.kr','danawa.co.kr','acution.co.kr'];
+            let idx = Math.floor(Math.random()*5);
+            location.href= `http://${luckys[idx]}`;
+        }
+    </script>
+    <h2>navigator</h2>
+    <p>접속중인 클라이언트의 다양한 정보를 알아낼 수 있음</p>
+    <script>
+        let appname = navigator.appName;
+        let codename = navigator.appCodeName;
+        let appver = navigator.appVersion;
+        let pf = navigator.platform;
+        let ua = navigator.userAgent;
+        document.write(appname,'<br>')
+        document.write(codename,'<br>')
+        document.write(appver,'<br>')
+        document.write(pf,'<br>')
+        document.write(ua,'<br>')
+    </script>
+
+</body>
+</html>
