@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>문서 객체 모델</title>
+</head>
+<body>
+    <h1>문서 객체 모델</h1>
+    <h2>개요</h2>
+    <p>텍스트파일로 만들어져 있는 html 문서를 브라우져에
+        시각적으로 나타내려면(렌더링) 먼저, 문서의 내용을
+        브라우저가 이해할 수 있는 형태로
+        메모리에 업로드하는 과정(파싱parsing)이 먼저 선행</p>
+    <p>파싱과정을 통해 메모리에 업로드된 결과는 DOM이라고 부르는데,
+        이것은 자바스크립트를 통해 문서의 내용에 접근해서 동적으로
+        변경할 수 있음</p>
+    <p>한편, DOM으로 구성된 문서내 객체들은 속성과 메서드로
+        구성된 DOM API를 이용해서 동적으로 웹페이지 내용을
+        변경할 수 있음</p>
+
+    <h2>DOM tree</h2>
+    <p>document node : 트리의 최상위 요소
+        DOM tree에 접근하기 위한 진입점(entry point)</p>
+    <p>element node : HTML 상의 요소를 의미</p>
+    <p>attribute node : HTML상의 요소내 속성을 의미</p>
+    <p>text node : HTML의 요소 내 텍스트를 의미</p>
+
+    <h2>요소 찾기 : DOM query</h2>
+    <p>요소를 선택할때는 태그이름, 클래스이름,
+        id, name등을 사용할 수 있음</p>
+
+    <p>어떤 요소를 id 선택자로 찾으려면
+        document.getElementById를 사용</p>
+
+    <p>하나의 요소를 class 선택자(태그명.클래스명)로 찾으려면
+        document.querySelector를 사용,
+        찾은 요소가 복수여도 하나만 선택</p>
+
+    <div>
+        <p id="one" class="first">시간은 금이라구 친구</p>
+        <p id="two" class="first">별의 영역이 광활하다는 건 놀라운 것이 아니다.
+            인류가 그것을 측정해낸 게 놀랍다</p>
+        <p id="three" class="third">어디서도 보지 못했던,
+            아무도 경험하지 못했던 완전히 새로운 게임</p>
+    </div>
+
+    <script>
+        // id 가 one 요소를 선택함
+        const one = document.getElementById('one');
+        // 선택한 요소에 css 스타일을 지정하려면
+        // '변수명.style.속성명 = 값' 형식 사용
+        one.style.color = 'red';
+
+        //two 라는 요소에 텍스트를 진하게 표시
+        const two = document.getElementById('two')
+        two.style.fontWeight = 'bold';
+
+        // three 라는 요소는 배경색(검정)을 지정
+        const three = document.getElementById('three')
+        three.style.background = 'black';
+        three.style.color = 'white';
+    </script>
+    <p>여러 요소들을 태그이름으로 찾으려면
+        document.getElementsByTagName를 사용,
+        반환값은 HTMLCollection객체(유사배열)에 저장</p>
+
+    <p>여러 요소들을 클래스이름으로 찾으려면
+        document.getElementsByClassName를 사용,
+        반환값은 HTMLCollection객체(유사배열)에 저장</p>
+
+    <p>여러 요소들을 클래스 선택자로 찾으려면
+        document.querySelectorAll을 사용,
+        반환값은 NodeList객체(유사리스트)에 저장</p>
+
+    <div>
+        <p class="two">시간은 금이라구 친구</p>
+        <p class="two">별의 영역이 광활하다는 건 놀라운 것이 아니다.
+            인류가 그것을 측정해낸 게 놀랍다</p>
+        <p class="fourth">어디서도 보지 못했던,
+            아무도 경험하지 못했던 완전히 새로운 게임</p>
+    </div>
+    <script>
+        //문서 제목 바꾸기
+        let title = document.getElementsByTagName('title');
+        document.write(title[0].innerText, '<br>');
+        title[0].innerText = 'Hello, DOM!!';
+
+        //클래스 이름이 two 인 요소의 스타일 변경
+        let p = document.getElementsByClassName('two');
+        document.write(p,'<br>')
+        p[0].style.color = 'blue';
+        p[1].style.background = 'yellow';
+
+    </script>
+
+    <h2>다용도 쿼리 선택기 - querySelector</h2>
+    <p>기존의 getElement~BY~ 등의 여러 메서드를 하나로 대체하기 위해 도입</p>
+    <p>검색시 CSS 선택자를 사용하기 때문에 매우 유연함</p>
+    <div>
+        <p class="fifth">시간은 금이라구 친구</p>
+        <p class="fifth">별의 영역이 광활하다는 건 놀라운 것이 아니다.
+            인류가 그것을 측정해낸 게 놀랍다</p>
+        <p class="sixth">어디서도 보지 못했던,
+            아무도 경험하지 못했던 완전히 새로운 게임</p>
+    </div>
+    <script>
+        // fifth 하나만 선택
+        let fifth = document.querySelector('.fifth');
+        fifth.style.textDecoration = 'underline';
+        // fifth 모두 선택
+        fifth = document.querySelectorAll('.fifth')
+        fifth[0].style.fontStyle = 'italic'
+        fifth[1].style.fontStyle = 'italic'
+    </script>
+
+    <h2>속성 다루기</h2>
+    <p>특정 요소의 속성을 다룰려면 setAttribute를 사용</p>
+
+    <div><img id="img1"></div>
+    <div><button type="button"
+                 onclick="showimg()">이미지</button></div>
+    <script>
+        let showimg = () => {
+            let img = document.querySelector('#img1');
+            //setAttribute(속성명, 속성값)
+            img.setAttribute('src','/static/img/plane.png')
+        }
+    </script>
+    <h2>새로운 요소 추가</h2>
+    <p>태그이름을 인자로 전달해서 문서상에
+        새로운 요소를 생성하려면 createElement를 사용</p>
+
+    <p>지정한 요소를 특정 요소의 자식 요소로 추가하려면
+        appendChild를 사용</p>
+
+    <p>텍스트 노드를 추가하려면 createTextNode를 사용</p>
+    <div id="img2"></div>
+    <div><button type="button"
+                 onclick="showimg2()">이미지2</button></div>
+    <script>
+        let showimg2 = () => {
+        let div = document.querySelector('#img2');
+
+        let img = document.createElement('img');
+        img.setAttribute('src', '/static/img/rubber-duck.png');
+        div.appendChild(img);
+        }
+    </script>
+    <h2>성적 결과 리스트</h2>
+    <div id="sj"></div>
+
+    <script>
+        // table, tr, th, td태그등을 이용해서
+        // 이름, 국어, 영어, 수학을 목록형태로 출력
+        let thdata = ['이름', '국어', '영어', '수학'];
+        let sjdata = ['지현', 98, 98, 98];
+
+        // 성적 테이블이 삽입될 위치 지정
+        let sj = document.querySelector('#sj');
+        // 테이블 생성
+        // <table border = 1 width=500px cellpadding=7></>table>
+        let table = document.createElement('table');
+        table.setAttribute('border', '1');
+        table.setAttribute('width', '500px');
+        table.setAttribute('cellpadding', '7');
+
+        //테이블의 제목행 생서
+        // <tr><th></>th></>tr><tr><th></>th></>tr><tr><th></>th></>tr>
+        let tr = document.createElement('tr');
+
+        let th = document.createElement('th')
+        let txt = document.createTextNode('이름');
+        th.appendChild(txt);
+        tr.appendChild(th);
+
+        //<th>국어</th>
+        th = document.createElement('th')
+        txt = document.createTextNode('국어');
+        th.appendChild(txt);
+        tr.appendChild(th);
+        //<th>영어</th>
+        th = document.createElement('th')
+        txt = document.createTextNode('영어');
+        th.appendChild(txt);
+        tr.appendChild(th);
+        //<th>수학</th>
+        th = document.createElement('th')
+        txt = document.createTextNode('수학');
+        th.appendChild(txt);
+        tr.appendChild(th);
+//--
+
+        table.appendChild(tr)
+        tr = document.createElement('tr')
+        tr.setAttribute('align', 'center')
+
+        // <td>지현</>td>
+        let td = document.createElement('td')
+        txt = document.createTextNode('지현');
+        td.appendChild(txt);
+        tr.appendChild(td);
+
+        //<th>99</th>
+        td = document.createElement('td')
+        txt = document.createTextNode('99');
+        td.appendChild(txt);
+        tr.appendChild(td);
+        //<th>98</th>
+        td = document.createElement('td')
+        txt = document.createTextNode('98');
+        td.appendChild(txt);
+        tr.appendChild(td);
+        //<th>97</th>
+        td = document.createElement('td')
+        txt = document.createTextNode('97');
+        td.appendChild(txt);
+        tr.appendChild(td);
+
+        table.appendChild(tr)
+        sj.appendChild(table);
+    </script>
+
+
+</body>
+</html>
