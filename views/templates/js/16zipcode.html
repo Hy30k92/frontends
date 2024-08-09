@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>우편번호 검색</title>
+</head>
+<body>
+
+
+    <h2>우편번호 검색</h2>
+    <div>
+        <select id = "sido" onchange=""></select>
+        <select id = "gugun" onchange=""></select>
+        <select id = "dong" onchange=""></select>
+    </div>
+
+    <script>
+        let sidodata = ['서울특별시','경기도','인천광역시',
+            '부산광역시','제주자치도'];
+        let gugundata = [
+            ['강남구', '서초구', '종로구', '송파구'],
+            ['과천시', '광명시', '성남분당구'],
+            ['연수구'],
+            ['부산진구'],
+            ['서귀포시']
+        ];
+        let dongdata = [
+            [['논현동','대치동','삼성동'], ['반포동','방배동','양재동'],['광희동','명동','충무로'],['가락동','석촌동']],
+            [['과천동'],['광명동'],['대장동']],
+            [['연수동']],
+            [['개금동','가야동']],
+            [['강정동']]
+        ];
+
+        let sido = document.querySelector('#sido');
+        let gugun = document.querySelector('#gugun');
+        let dong = document.querySelector('#dong');
+
+        //타이틀
+        let getSido = () => {
+            let opt = document.createElement('option');
+            let txt = document.createTextNode('광역시');
+            opt.appendChild(txt);
+            sido.appendChild(opt)
+
+        };
+
+        // 광역시 목록
+        for (let val of sidodata){
+            opt = document.createElement('option')
+            txt = document.createTextNode(val);
+            opt.appendChild(txt);
+            sido.appendChild(opt);}
+
+        // 군구 타이틀
+        let getGugun = () => {
+            let opt = document.createElement('option');
+            let txt = document.createTextNode('시/군/구');
+            opt.appendChild(txt);
+            gugun.appendChild(opt)
+
+        };
+        //시군구 목록
+        for (let val of gugundata[0]){
+            opt = document.createElement('option')
+            txt = document.createTextNode(val);
+            opt.appendChild(txt);
+            gugun.appendChild(opt);}
+
+        //읍/면/동
+        let getDong = () => {
+            let opt = document.createElement('option');
+            let txt = document.createTextNode('읍/면/동');
+            opt.appendChild(txt);
+            dong.appendChild(opt)
+
+        };
+        // 동 목록
+        for (let val of dongdata[0][0]){
+            opt = document.createElement('option')
+            txt = document.createTextNode(val);
+            opt.appendChild(txt);
+            dong.appendChild(opt);
+        }
+
+        getSido();
+        getGugun();
+        getDong();
+    </script>
+
+</body>
+</html>
