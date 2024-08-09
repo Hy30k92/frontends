@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>폼 다루기</title>
+    <style>
+        .warn{color: red}
+    </style>
+
+</head>
+<body>
+    <h1>폼 다루기</h1>
+    <h2>개요</h2>
+    <p>폼의 각 요소를 다룰때 querySelector나
+        getElementById 대신 폼이름.name속성으로도
+        사용 가능함</p>
+    <p>폼에 입력한 값들을 서버로 전송하려면
+        버튼 객체의 submit 함수 호출</p>
+    <p>MIME : 클라이언트의 다양한 요청의 종류를 정의한 것 : 메세지타입/서브타입<br>
+        웹 서버는 일반적으로 텍스트형식의 파일(text/plain)만 다룰수 있음<br>
+        하지만, 이진파일(application/octet-stream)이나 JSP/PHP등의 파일등은
+        웹서버가 다룰 수 없기 때문에
+        그것을 처리할수 있는 추가적인 프로그램이 필요할 수 있음</p>
+
+    <div>
+        <form name="join1">
+            <div>아이디(uid)
+                <input type="text" name="uid"></div>
+            <div id="warn1" class="warn"></div>
+
+            <div>비밀번호(pwd)
+                <input type="password" name="pwd"></div>
+
+            <div>비밀번호 확인(pwd)
+                <input type="password" name="repwd"></div>
+            <div id="warn2" class="warn"></div>
+
+            <div>이름(name)
+                <input type="text" name="name"></div>
+            <div id="warn3" class="warn"></div>
+
+            <div>성별(gender)
+                남<input type="radio" name="gender" value="m">
+                여<input type="radio" name="gender" value="f">
+            </div>
+            <div id="warn4" class="warn"></div>
+
+            <button type="button" id="joinbtn">입력완료</button>
+        </form>
+    </div>
+
+    <script>
+        // 특정 폼 지정 : document.폼이름
+        let frm1 = document.join1;
+
+        // 안내 메세지들
+        let warn1 = document.querySelector('#warn1')
+        let warn2 = document.querySelector('#warn2')
+        let warn3 = document.querySelector('#warn3')
+        let warn4 = document.querySelector('#warn4')
+
+        // 아이디 입력완료 버튼
+        let joinbtn = document.querySelector('#joinbtn')
+        joinbtn.addEventListener('click',() => {
+            warn1.textContent = ''
+            warn2.textContent = ''
+            warn3.textContent = ''
+            warn4.textContent = ''
+
+
+            let gdr = document.querySelectorAll('[name="gender"]');
+
+            // if (document.join1.uid.value === '') {
+            if (frm1.uid.value === '') {
+                warn1.textContent = '아이디를 입력하세요!!';
+            } else if (frm1.pwd.value === '') {
+                warn2.textContent = '비밀번호를 입력하세요!!';
+            } else if (frm1.repwd.value === '') {
+                warn2.textContent = '비밀번호 확인을 입력하세요!!';
+            } else if (frm1.repwd.value === '') {
+                warn2.textContent = '비밀번호가 일치하지 않아요!!';
+            } else if (frm1.name.value === '') {
+                warn3.textContent = '이름을 입력하세요!!';
+            } else if (frm1.gender.value === '') {
+               warn4.textContent = '성별을 선택 하세요!!';
+            //else if (!gdr[0].checked && !gdr[1].checked) {
+                warn4.textContent = '성별을 선택 하세요!!';
+            }
+        })
+    </script>
+    <h2>form 다루기 - submit</h2>
+    <p>submit 버튼에 대한 이벤트 처리는<br>
+        event.preventDefault() 등의 코드 사용 </p>
+    <div>
+
+        <form name="login">
+            <div>아이디(uid)
+                <input type="text" name="uid"></div>
+
+            <div>비밀번호(pwd)
+                <input type="password" name="pwd"></div>
+
+            <div id="warn5" class="warn"></div>
+
+            <button type="submit" id="join2btn">입력완료</button>
+        </form>
+    </div>
+
+    <script>
+        let lgnfrm = document.login;
+        let warn5 = document.querySelectorAll('#warn5');
+        warn5.textContent = ''
+
+        lgnfrm.addEventListener('submit', (e) => {
+            if (lgnfrm.uid.value ===' ') {
+                warn5.textContent = '아이디를 입력하세요';
+                e.preventDefault(); //submin 중지
+            } else if (lgnfrm.pwd.value ===' ') {
+                warn5.textContent = '비밀번호를 입력하세요';
+                e.preventDefault();}
+        });
+
+    </script>
+
+
+
+</body>
+</html>
