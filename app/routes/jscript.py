@@ -39,7 +39,7 @@ async def array(req: Request):
     return templates.TemplateResponse('js/06array.html', {'request': req})
 
 @jscript_router.get('/while')
-async def while2(req: Request):
+async def whiles(req: Request):
     return templates.TemplateResponse('js/07while.html', {'request': req})
 
 @jscript_router.get('/function')
@@ -51,7 +51,7 @@ async def callback(req: Request):
     return templates.TemplateResponse('js/09callback.html', {'request': req})
 
 @jscript_router.get('/except')
-async def except2(req: Request):
+async def excepts(req: Request):
     return templates.TemplateResponse('js/10except.html', {'request': req})
 
 @jscript_router.get('/bom')
@@ -73,3 +73,7 @@ async def form(req: Request):
 @jscript_router.get('/ajax')
 async def ajax(req: Request):
     return templates.TemplateResponse('js/15ajax.html', {'request': req})
+
+@jscript_router.get('/zipcode')
+async def zipcode(req: Request):
+    return templates.TemplateResponse('js/16zipcode.html', {'request': req})

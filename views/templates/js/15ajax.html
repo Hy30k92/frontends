@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>자바스크립트 비동기 처리</title>
+</head>
+<body>
+    <h1>자바스크립트 비동기 처리</h1>
+    <h2>개요</h2>
+    <p>브라우져에서 웹페이지를 요청하거나 링크를 클릭하면
+        필연적으로 화면갱신이 발생함</p>
+    <p>서버로부터 웹페이지가 반환되면
+        화면 전체를 갱신해야 하는데, 페이지 일부만
+        갱신하고도 동일한 효과를 볼수있게 하는 기술이 AJAX임</p>
+    <p>이를 통해 데스크탑 프로그램과 동일한 사용자 경험을
+        제공받을 수 있음</p>
+
+    <h2>XMLHttpRequest</h2>
+    <p>Ajax 처리를 위한 핵심 라이브러리</p>
+    <p>마이크로소프트가 IE4에 포함시켜 발표했던 기술이 시초</p>
+
+    <div>
+        <p id="msg"> </p>
+    </div>
+
+    <script>
+        // 비동기 요청을 위한 ajax 객체 생성
+        let req = new XMLHttpRequest(); // 1
+
+
+        // 콜백함수 정의
+        // 서버로부터 넘어오는 결과에 따라
+        // 응답을 처리하기 위해 콜백함수 정의
+        // readystate : 클라이언트의 요청 상태 코드
+        // readystate : 1 - open 호출 완료
+        // readystate : 2 - send 호출 완료
+        // readystate : 3 - 서버 응답 준비중
+        // readystate : 4 - 서버 응답 완료
+
+        // status : 서버의 처리코드
+        // req.status : 200 - '정상 처리' 응답
+        // req.status : 404 - '찾는 데이터 없음' 응답
+        // req.status : 500 - '코드 오류 비정상 종료' 응답
+
+        req.onreadystatechange = (e) => {   // 4
+            console.log('로그',req.readyState, req.status);
+            if (req.readyState === 4 && req.status ===200 ){
+                let msg = document.querySelector('#msg');
+                msg.textContent = req.responseText;
+            } else {
+                console.log(req.readyState, req.status);
+            }
+        }
+
+        // 서버에 데이터를 요청하기 위해
+        // 요청방식과 대상이 있는 URL 작성
+        // open(요청방식, 요청URL, 비동기여부)
+        req.open('get','/static/sayHello.txt', true);   // 2
+        //서버에 요청
+        req.send();                                     // 3
+    </script>
+
+    <h2>아이디 중복검사</h2>
+    <div>
+        <input type="text" id="userid">
+        <button type="button" id="checkbtn">아이디 중복검사</button>
+        <button type="button" id="check2btn">아이디 중복검사2</button>
+        <p id="msg2"></p>
+    </div>
+    <script>
+        let userid = document.querySelector('#userid');
+        let msg2 = document.querySelector('#msg2');
+        let checkbtn = document.querySelector('#checkbtn');
+        let check2btn = document.querySelector('#check2btn');
+
+        // 아이디 중복검사 함수
+        let isExistUid = (uid) => {
+            let isExist = false;
+            msg2.textContent = '사용가능한 아이디';
+            if (userid.value === uid) { isExist = true; }
+
+            if (isExist){
+                msg2.textContent = '이미 사용중인 아이디';
+            }
+        }
+
+        checkbtn.addEventListener('click', () => {
+            let req = new XMLHttpRequest();
+            req.onreadystatechange = () => {
+                if(req.readyState ===4 && req.status === 200){
+                    isExistUid(req.responseText);
+            } else{
+                    console.log(req.status);
+                }
+
+            };
+            req.open('get','/static/member.txt',true);
+            req.send();
+        });
+        //btn2
+        check2btn.addEventListener('click', () => {
+            let req = new XMLHttpRequest();
+            req.onreadystatechange = () => {
+                if(req.readyState ===4 && req.status === 200){
+                    isExistUid2(req.responseText);
+                } else{
+                    console.log(req.status);
+                }
+
+            };
+            req.open('get','/static/member2.txt',true);
+            req.send();
+        });
+
+        let isExistUid2 = (uids) => {
+            let isExist = false;
+            msg2.textContent = '사용가능한 아이디';
+            msg2.style.color = 'blue'
+
+            // 문자열 형태로 넘어온 아이디들을
+            // JSON 형태 객체로 변환
+           let objs = JSON.parse(uids);
+
+            // 객체형태로 변환된 아이디들을
+            // 하나씩 순회 해 가면서 동일여부를 비교
+            for (let user of objs.users){
+                if (user.uid === userid.value){
+                    isExist = true; break;
+                }
+            }
+
+            if (isExist){
+                msg2.textContent = '이미 사용중인 아이디';
+                msg2.style.color = 'red'
+            }
+        }
+    </script>
+
+    <h2>현대적인 XMLHttpRequest</h2>
+    <p>XMLHttpRequest 는 콜백기반의 오래된 함수 - 상대적으로 사용하기 복잡함 </p>
+    <p>이것의 대안으로 fetch 함수가 도입됨 - 프로미스 기반으로 콜백함수를
+        사용하지 않아도 되므로 사용하기 편함</p>
+    <p>자동으로 CORS를 처리할 수 있고, 스트리밍도 지원하고,
+        .json() 메서드로 json 응답처리를 간단하게 수행가능</p>
+    <p>단, 파일 업로드시 진행상황은 지원하지 않음</p>
+
+    <div>
+        <p id="msg3" style="color: crimson; font-weight: bold"> </p>
+    </div>
+
+    <script>
+        let msg3 = document.querySelector('#msg3')
+
+        // 프로미스(ES6)는 JavaScript에서 비동기 작업을 관리하는 표준적인 방법
+        // 복잡한 비동기 코드의 구조를 단순화하고, 에러 처리를 일관되게 수행 가능
+        // 즉, then(), catch(), finally() 메서드를 통해 비동기 작업의 흐름을 명확히 표현
+        // 콜백 지옥을 피하고 코드의 가독성을 높임
+        fetch('/static/sayHello.txt')
+            .then(resp => resp.text())
+            .then(data => msg3.textContent = data )
+            .catch(error => console.error(error));
+    </script>
+
+
+</body>
+</html>
