@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>이벤트</title>
+</head>
+<body>
+    <h1>자바스크립트 이벤트</h1>
+    <h2>개요</h2>
+    <p>이벤트는 사용자가 웹페이지를 이용하면서
+        발생시키는 어떤 행위를 의미</p>
+    <p>버튼을 클릭하거나 브라우저 크기를 변경하거나
+        html 문서가 브라우져에 의해 로드되었거나
+        특정 키를 눌렀거나 하는 것을 의미</p>
+
+    <p>이벤트가 발생하면 누군가는 이를 감지할 수 있어야 하고
+        그에 대응하는 처리를 호출해 주어야 함</p>
+    <p>브라우저는 이러한 이벤트를 감지해서 통지를 해줌으로써
+        사용자와의 상호작용을 가능하게 함</p>
+
+    <h2>이벤트 핸들러</h2>
+    <p>이벤트가 발생하면 그에 맞은 반응을 해야 함</p>
+    <p>이러한 반응은 보통 함수로 구현되어 있고,
+        이벤트 발생시 함수가 실행됨 - 이벤트 핸들러</p>
+
+    <h2>이벤트 핸들러 등록</h2>
+    <p>인라인 이벤트 핸들러 :
+        요소에 직접 이벤트핸들러를 등록 (비추),
+        &lt;요소 'on이벤트명'='이벤트핸들러'&gt;</p>
+
+    <p>인라인 이벤트 핸들러 프로퍼티 :
+        DOM 객체에 속성형태로 이벤트핸들러 등록,
+        객체명.이벤트명 = 이벤트핸들러 </p>
+
+    <p>addEventListener :
+        addEventListener함수를 이용해서
+        DOM 요소에 이벤트를 연결(binding)하고
+        해당 이벤트발생시 호출될 콜백함수 지정 (추천!),<br>
+        하나의 요소에 여러 이벤트 등록 가능.
+        버블링과 캡처링 지원,
+        대상.addEventListener(이벤트명, 콜백함수명)</p>
+
+    <div>
+        <button type="button" onclick="sayhello()">이벤트1</button>
+        <button type="button" id="btn2">이벤트2</button>
+        <button type="button" id="btn3">이벤트3</button>
+    </div>
+    <script>
+        let sayhello = () => {alert('Hello,World!!')}
+
+        let btn2 = document.querySelector('#btn2');
+        btn2.onclick = sayhello;
+
+        let btn3 = document.querySelector('#btn3');
+        btn3.addEventListener('click',sayhello);
+    </script>
+
+    <h2>간단한 폼 체크</h2>
+    <form>
+        <div>아이디 <input type="text" name="userid" id="userid"></div>
+        <div>전화번호 <input type="text" name="phone" id="phone"></div>
+        <div>나이 <input type="text" name="age" id="age"></div>
+        <p id="msg"></p>
+
+        <script>
+            let userid = document.querySelector('#userid');
+            let phone = document.querySelector('#phone');
+            let age = document.querySelector('#age');
+            let msg = document.querySelector('#msg');
+
+            // 이벤트 핸들러 선언
+            // 아이디가 제대로 입력되었는지 체크  : 영문ㄴ소문자 5 `7사이
+            let checkuid = (uid) => {
+                let result = ' 아이디가 올바른 형식이 아닙니다!!'
+                let re = /^[a-z]{5,17}/;
+                if (re.test(uid)) result = '아이디가 올바른 형식입니다!!'
+
+                msg.textContent = result;
+            };
+
+            // 전화번호가 제대로 입력되었는지 체크
+            // -> 010, 011, 012, 015, 016,018,019 로시작
+            let checkphone = (phone) => {
+                let result = ' 전화번호가 올바른 형식이 아닙니다!!'
+                let re = /^01[0125689]-\d{3,4}-\d{4}/;
+                if (re.test(phone)) result = '전화번호가 올바른 형식입니다!!'
+
+                msg.textContent = result;
+            }
+            // 나이가 제대로 입력되었는지 체크 : 0 ~ 99범위
+            let checkage = (age) => {
+                let result = ' 나이가 올바른 형식이 아닙니다!!'
+                let re = /^([1-9]|[1-9][0-9])$/;
+                if (re.test(age)) result = '나이가 올바른 형식입니다!!'
+
+                msg.textContent = result;
+            };
+
+            //이트 핸들러 등록
+            userid.addEventListener('blur',
+                () => { checkuid(userid.value);} );
+            phone.addEventListener('blur',
+                () => { checkphone(phone.value);} );
+            age.addEventListener('blur',
+                () => { checkage(age.value);} );
+        </script>
+        <h2>이벤트 종류</h2>
+        <p>load : 웹페이지가 브라우저에 의해 읽혀졌을때</p>
+        <p>resize : 브라우저의 창의 크기를 조절했을때</p>
+        <p>scroll : 브라우저의 페이지를 스크롤했을때</p>
+
+        <p>keydown : 키를 누르고 있을때(텍스트 입력x, 순수하게 키 입력만 감지)</p>
+        <p>keyup : 누르고 있던 키를 뗄때(텍스트 입력중)</p>
+        <p>keypress : 키를 누르고 뗏을때(주로 입력가능한 텍스트 키 중점)</p>
+
+        <p>click : 마우스버튼을 클릭했을때</p>
+        <p>dblclick : 마우스버튼을 더블클릭했을때</p>
+        <p>mouseover : 마우스 포인터를 특정요소 위에 두었을때</p>
+        <p>mouseout : 마우스 포인터를 특정요소 밖으로 두었을때</p>
+
+        <p>focus : 요소가 포커스를 얻을때</p>
+        <p>blur : 요소가 포커스를 잃을때</p>
+
+        <p>change : select, checkbox, radio button의
+            상태가 바뀌었을때</p>
+        <p>submit : submit 버튼을 클릭했을때</p>
+    </form>
+
+    <h2>폼 입력 글자수 체크</h2>
+    <div>
+        <textarea id="intro" rows="5"
+                  cols="50"></textarea>
+        <div><span id="chrcnt"></span>/100</div>
+    </div>
+    <script>
+        let intro = document.querySelector('#intro')
+        let chrcnt = document.querySelector('#chrcnt')
+        //
+        // intro.addEventListener('keydown', () => {
+        //     let chcnt = intro.value.length;
+        //     chrcnt.textContent = chcnt;
+        // } ); // keydown 한템포 늦게감지
+        //
+        intro.addEventListener('keyup', () => {
+            let chcnt = intro.value.length;
+            chrcnt.style.color = 'black'
+            if (chcnt > 100) chrcnt.style.color = 'red'
+            chrcnt.textContent = chcnt;
+        } ); //딜레이 없이 잘 감지 (추천)
+
+        // intro.addEventListener('keypress', () => {
+        //     let chcnt = intro.value.length;
+        //     chrcnt.textContent = chcnt;
+        // } ); // 문자키에만 반응 , deprecated 예정
+    </script>
+
+
+
+</body>
+</html>
