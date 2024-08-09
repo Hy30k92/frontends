@@ -164,60 +164,169 @@
         table.setAttribute('width', '500px');
         table.setAttribute('cellpadding', '7');
 
-        //테이블의 제목행 생서
-        // <tr><th></>th></>tr><tr><th></>th></>tr><tr><th></>th></>tr>
+//         //테이블의 제목행 생성
+//         // <tr> </tr>
+//         let tr = document.createElement('tr');
+//         //<th> 이름 </th>
+//         let th = document.createElement('th')
+//         let txt = document.createTextNode('이름');
+//         th.appendChild(txt);
+//         tr.appendChild(th);
+//
+//         //<th>국어</th>
+//         th = document.createElement('th')
+//         txt = document.createTextNode('국어');
+//         th.appendChild(txt);
+//         tr.appendChild(th);
+//         //<th>영어</th>
+//         th = document.createElement('th')
+//         txt = document.createTextNode('영어');
+//         th.appendChild(txt);
+//         tr.appendChild(th);
+//         //<th>수학</th>
+//         th = document.createElement('th')
+//         txt = document.createTextNode('수학');
+//         th.appendChild(txt);
+//         tr.appendChild(th);
+// //--
+//         //본문행 생성
+//         table.appendChild(tr)
+//         tr = document.createElement('tr')
+//         tr.setAttribute('align', 'center')
+//
+//         // <td>지현</>td>
+//         let td = document.createElement('td')
+//         txt = document.createTextNode('지현');
+//         td.appendChild(txt);
+//         tr.appendChild(td);
+//
+//         //<th>99</th>
+//         td = document.createElement('td')
+//         txt = document.createTextNode('99');
+//         td.appendChild(txt);
+//         tr.appendChild(td);
+//         //<th>98</th>
+//         td = document.createElement('td')
+//         txt = document.createTextNode('98');
+//         td.appendChild(txt);
+//         tr.appendChild(td);
+//         //<th>97</th>
+//         td = document.createElement('td')
+//         txt = document.createTextNode('97');
+//         td.appendChild(txt);
+//         tr.appendChild(td);
+//         //tr을 테이블에 추가
+//         table.appendChild(tr)
+
+
+        //제목행 생성
         let tr = document.createElement('tr');
-
-        let th = document.createElement('th')
-        let txt = document.createTextNode('이름');
-        th.appendChild(txt);
-        tr.appendChild(th);
-
-        //<th>국어</th>
-        th = document.createElement('th')
-        txt = document.createTextNode('국어');
-        th.appendChild(txt);
-        tr.appendChild(th);
-        //<th>영어</th>
-        th = document.createElement('th')
-        txt = document.createTextNode('영어');
-        th.appendChild(txt);
-        tr.appendChild(th);
-        //<th>수학</th>
-        th = document.createElement('th')
-        txt = document.createTextNode('수학');
-        th.appendChild(txt);
-        tr.appendChild(th);
-//--
-
+        for (let val of thdata){
+            th = document.createElement('th')
+            txt = document.createTextNode(val);
+            th.appendChild(txt);
+            tr.appendChild(th);
+            }
         table.appendChild(tr)
-        tr = document.createElement('tr')
-        tr.setAttribute('align', 'center')
 
-        // <td>지현</>td>
-        let td = document.createElement('td')
-        txt = document.createTextNode('지현');
-        td.appendChild(txt);
-        tr.appendChild(td);
-
-        //<th>99</th>
-        td = document.createElement('td')
-        txt = document.createTextNode('99');
-        td.appendChild(txt);
-        tr.appendChild(td);
-        //<th>98</th>
-        td = document.createElement('td')
-        txt = document.createTextNode('98');
-        td.appendChild(txt);
-        tr.appendChild(td);
-        //<th>97</th>
-        td = document.createElement('td')
-        txt = document.createTextNode('97');
-        td.appendChild(txt);
-        tr.appendChild(td);
-
-        table.appendChild(tr)
+        //테이블을 sj요소에 추가
         sj.appendChild(table);
+
+        //본문행 생성
+        tr = document.createElement('tr');
+        tr.setAttribute('align', 'center')
+        for (let val of sjdata){
+            td = document.createElement('td')
+            txt = document.createTextNode(val);
+            td.appendChild(txt);
+            tr.appendChild(td);
+        }
+        table.appendChild(tr)
+
+        //테이블을 sj요소에 추가
+        sj.appendChild(table);
+
+    </script>
+
+    <h2>우편번호 검색</h2>
+    <div>
+        <select id = "sido" onchange=""></select>
+        <select id = "gugun" onchange=""></select>
+        <select id = "dong" onchange=""></select>
+    </div>
+
+    <script>
+        let sidodata = ['서울특별시','경기도','인천광역시',
+            '부산광역시','제주자치도'];
+        let gugundata = [
+            ['강남구', '서초구', '종로구', '송파구'],
+            ['과천시', '광명시', '성남분당구'],
+            ['연수구'],
+            ['부산진구'],
+            ['서귀포시']
+        ];
+        let dongdata = [
+            [['논현동','대치동','삼성동'], ['반포동','방배동','양재동'],['광희동','명동','충무로'],['가락동','석촌동']],
+            [['과천동'],['광명동'],['대장동']],
+            [['연수동']],
+            [['개금동','가야동']],
+            [['강정동']]
+        ];
+
+        let sido = document.querySelector('#sido');
+        let gugun = document.querySelector('#gugun');
+        let dong = document.querySelector('#dong');
+
+        //타이틀
+        let getSido = () => {
+            let opt = document.createElement('option');
+            let txt = document.createTextNode('광역시');
+            opt.appendChild(txt);
+            sido.appendChild(opt)
+
+        };
+
+            // 광역시 목록
+         for (let val of sidodata){
+            opt = document.createElement('option')
+            txt = document.createTextNode(val);
+            opt.appendChild(txt);
+            sido.appendChild(opt);}
+
+         // 군구 타이틀
+        let getGugun = () => {
+            let opt = document.createElement('option');
+            let txt = document.createTextNode('시/군/구');
+            opt.appendChild(txt);
+            gugun.appendChild(opt)
+
+        };
+         //시군구 목록
+        for (let val of gugundata[0]){
+            opt = document.createElement('option')
+            txt = document.createTextNode(val);
+            opt.appendChild(txt);
+            gugun.appendChild(opt);}
+
+        //읍/면/동
+        let getDong = () => {
+            let opt = document.createElement('option');
+            let txt = document.createTextNode('읍/면/동');
+            opt.appendChild(txt);
+            dong.appendChild(opt)
+
+        };
+        // 동 목록
+        for (let val of dongdata[0][0]){
+            opt = document.createElement('option')
+            txt = document.createTextNode(val);
+            opt.appendChild(txt);
+            dong.appendChild(opt);
+        }
+
+        getSido();
+        getGugun();
+        getDong();
     </script>
 
 

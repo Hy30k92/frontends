@@ -61,3 +61,15 @@ async def bom(req: Request):
 @jscript_router.get('/dom')
 async def dom(req: Request):
     return templates.TemplateResponse('js/12dom.html', {'request': req})
+
+@jscript_router.get('/event')
+async def event(req: Request):
+    return templates.TemplateResponse('js/13event.html', {'request': req})
+
+@jscript_router.get('/form')
+async def form(req: Request):
+    return templates.TemplateResponse('js/14form.html', {'request': req})
+
+@jscript_router.get('/ajax')
+async def ajax(req: Request):
+    return templates.TemplateResponse('js/15ajax.html', {'request': req})
