@@ -57,13 +57,17 @@
             opt = document.createElement('option')
             txt = document.createTextNode(val);
             opt.appendChild(txt);
-            sido.appendChild(opt);}
+            sido.appendChild(opt);
+        }
         };
         // 군구 타이틀
         let getGugun = () => {
             //기존 시군구 항목 제거
             while(gugun.firstChild){ // 시군구에 항목이 있으면
                 gugun.removeChild(gugun.firstChild); //자식요소 제거
+            }
+            while(dong.firstChild){ // 시군구에 항목이 있으면
+                dong.removeChild(dong.firstChild); //자식요소 제거
             }
 
         //타이틀

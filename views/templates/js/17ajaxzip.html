@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax zipcode</title>
+    <style>
+        select{padding: 5px}
+    </style>
+</head>
+<body>
+    <h1>ajax zipcode</h1>
+
+    <h2>우편번호 검색</h2>
+    <div>
+        <select id = "sido" onchange="getGugun()"></select>
+        <select id = "gugun" onchange="getDong()"></select>
+        <select id = "dong" onchange="getAddress()"></select>
+        <p id = "myaddr"></p>
+    </div>
+
+    <script>
+        let sido = document.querySelector('#sido');
+        let gugun = document.querySelector('#gugun');
+        let dong = document.querySelector('#dong');
+
+        let zipTitle = (title, node) => {
+        let opt = document.createElement('option');
+        let txt = document.createTextNode(title);
+        opt.appendChild(txt);
+        node.appendChild(opt)
+        };
+
+
+        let getSido = () => {
+            // 각 select 태그에 제목 표시
+            zipTitle('- 광역시 -', sido);
+            zipTitle('- 시/군/구 -', gugun);
+            zipTitle('- 읍/면/동 -', dong);
+
+            // zipcode에서 시도를 읽어와서 select에 출력
+            fetch('/js/getsido')
+                .then(res => res.json())
+                .then(data => {
+                    data.forEach(item => {
+                        zipTitle(`${item.sido}`,sido);
+                    });
+                });
+        };
+        let getGugun = () => {
+            // 기존 항목 제거
+            while(gugun.firstChild){ // 시군구에 항목이 있으면
+                gugun.removeChild(gugun.firstChild); //자식요소 제거
+            }
+            while(dong.firstChild){ // 시군구에 항목이 있으면
+                dong.removeChild(dong.firstChild); //자식요소 제거
+            }
+            //타이틀 추가
+            zipTitle('- 시/군/구 -', gugun);
+            zipTitle('- 읍/면/동 -', dong);
+
+            // zipcode 에서 시/도 에대한 시/군/구 를 읽어와서 select 에 출력
+            fetch(`/js/getgugun?sido=${sido.value}`)
+                .then(res => res.json())
+                .then(data => {
+                    data.forEach(item => {
+                        zipTitle(`${item.gugun}`,gugun);
+                    });
+                });
+        };
+
+        let getDong = () => {
+            //기존 읍면동 항목 제거
+            while(dong.firstChild){ // 시군구에 항목이 있으면
+                dong.removeChild(dong.firstChild); //자식요소 제거
+            }
+            //타이틀 추가
+            zipTitle('- 읍/면/동 -', dong);
+            fetch(`/js/getdong?sido=${sido.value}&gugun=${gugun.value}`)
+                .then(res => res.json())
+                .then(data => {
+                    data.forEach(item => {
+                        zipTitle(`${item.dong}`,dong);
+                    });
+                });
+        };
+
+        let getAddress = () => {
+            if (dong.selectedIndex > 0){
+                let result = `선택한 주소 :
+                ${sido.value} ${gugun.value} ${dong.value}`;
+                let myaddr = document.querySelector('#myaddr');
+                myaddr.textContent = result
+            }
+        };
+
+        getSido();
+
+
+
+    </script>
+
+
+
+</body>
+</html>
