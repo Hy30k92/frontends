@@ -3,20 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>우편번호 검색</title>
+    <style>
+        select {padding : 5px;}
+    </style>
 </head>
 <body>
 
 
     <h2>우편번호 검색</h2>
     <div>
-        <select id = "sido" onchange=""></select>
-        <select id = "gugun" onchange=""></select>
-        <select id = "dong" onchange=""></select>
+        <select id = "sido" onchange="getGugun()"></select>
+        <select id = "gugun" onchange="getDong()"></select>
+        <select id = "dong" onchange="getAddress()"></select>
+      <p id = "myaddr"></p>
     </div>
 
     <script>
         let sidodata = ['서울특별시','경기도','인천광역시',
             '부산광역시','제주자치도'];
+
         let gugundata = [
             ['강남구', '서초구', '종로구', '송파구'],
             ['과천시', '광명시', '성남분당구'],
@@ -36,6 +41,8 @@
         let gugun = document.querySelector('#gugun');
         let dong = document.querySelector('#dong');
 
+
+
         //타이틀
         let getSido = () => {
             let opt = document.createElement('option');
@@ -43,7 +50,7 @@
             opt.appendChild(txt);
             sido.appendChild(opt)
 
-        };
+
 
         // 광역시 목록
         for (let val of sidodata){
@@ -51,36 +58,61 @@
             txt = document.createTextNode(val);
             opt.appendChild(txt);
             sido.appendChild(opt);}
-
+        };
         // 군구 타이틀
         let getGugun = () => {
+            //기존 시군구 항목 제거
+            while(gugun.firstChild){ // 시군구에 항목이 있으면
+                gugun.removeChild(gugun.firstChild); //자식요소 제거
+            }
+
+        //타이틀
             let opt = document.createElement('option');
             let txt = document.createTextNode('시/군/구');
             opt.appendChild(txt);
             gugun.appendChild(opt)
 
-        };
         //시군구 목록
-        for (let val of gugundata[0]){
+        if (sido.selectedIndex > 0 ){
+        for (let val of gugundata[sido.selectedIndex - 1]){
             opt = document.createElement('option')
             txt = document.createTextNode(val);
             opt.appendChild(txt);
-            gugun.appendChild(opt);}
+            gugun.appendChild(opt);
+            }
+        }
+        };
+
 
         //읍/면/동
         let getDong = () => {
+            //기존 읍면동 항목 제거
+            while(dong.firstChild){ // 시군구에 항목이 있으면
+                dong.removeChild(dong.firstChild); //자식요소 제거
+            }
+            //타이틀
             let opt = document.createElement('option');
             let txt = document.createTextNode('읍/면/동');
             opt.appendChild(txt);
-            dong.appendChild(opt)
-
-        };
-        // 동 목록
-        for (let val of dongdata[0][0]){
-            opt = document.createElement('option')
-            txt = document.createTextNode(val);
-            opt.appendChild(txt);
             dong.appendChild(opt);
+
+        // 동 목록
+        if (gugun.selectedIndex > 0 )
+            for (let val of dongdata[sido.selectedIndex - 1][[gugun.selectedIndex - 1]]){
+                opt = document.createElement('option')
+                txt = document.createTextNode(val);
+                opt.appendChild(txt);
+                dong.appendChild(opt);
+            }
+        };
+
+        let getAddress = () =>{
+            if (dong.selectedIndex > 0){
+                let result = `선택한 주소 :
+                ${sido.value} ${gugun.value} ${dong.value}`;
+                let myaddr = document.querySelector('#myaddr');
+                myaddr.textContent = result
+            }
         }
 
         getSido();
